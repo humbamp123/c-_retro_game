@@ -18,6 +18,7 @@
 #include <ncurses.h>
 #include <stdlib.h>
 #include <iostream>
+#include "Player.class.hpp"
 
 class Game
 {
@@ -29,7 +30,9 @@ public:
 
   WINDOW* wnd;
   void run();
-
+  void screenCheck(Player & master);
+  unsigned int xMax;
+  unsigned int yMax;
 };
 
 

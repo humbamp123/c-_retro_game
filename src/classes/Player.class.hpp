@@ -19,9 +19,20 @@
 class Player : public Character {
  public:
   Player(void);
+  Player(unsigned int max_y);
   Player(Player const &src);
   Player &operator=(Player const &rhs);
   ~Player(void);
+  void movePlayer(Player &srd, unsigned int in_char);
+  bool getExit();
+  unsigned int getParentXMax();
+  unsigned int getParentYMax();
+  void setParentXYMax(unsigned int xmax, unsigned int ymax);
+
+ private:
+  bool _exit_requested;
+  unsigned int _parentXMax;
+  unsigned int _parentYMax;
 };
 
 #endif
