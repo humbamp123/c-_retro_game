@@ -14,6 +14,7 @@
 #include <unistd.h>
 
 Enemy::Enemy(void) : Character(10, 84, 0, 0, 1, 190, 200, 140, 150, 15, 'X') {
+  this->_status = false;
 #ifdef FT_DEBUG
   std::cout << "Enemy constructor Called" << std::endl;
 #endif
@@ -57,6 +58,12 @@ void Enemy::spawn(void) {
   }
   putSprite();
 }
+
+void Enemy::setStatus(bool status) {
+  this->_status = status;
+}
+
+bool Enemy::getStatus(void) { return(this->_status); }
 
 int Enemy::getBounds(void) { return( this->_bounds); }
 

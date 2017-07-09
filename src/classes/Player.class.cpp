@@ -45,6 +45,8 @@ bool Player::getExit() { return (this->_exit_requested); }
 
 void Player::movePlayer(unsigned int in_char) {
   this->clearSprite();
+  std::cout << this->_maxX << std::endl;
+  std::cout << this->_maxY << std::endl;
   switch (in_char) {
     case 'q':
       this->_exit_requested = true;
@@ -57,7 +59,7 @@ void Player::movePlayer(unsigned int in_char) {
     case KEY_DOWN:
     case 's':
     case 'k':
-      if (this->getY() < (int)this->_parentYMax - 2)
+      if (this->getY() < (int)this->_maxY - 2)
         this->setY(this->getY() + 1);
       break;
     case KEY_LEFT:
@@ -68,7 +70,7 @@ void Player::movePlayer(unsigned int in_char) {
     case KEY_RIGHT:
     case 'd':
     case 'l':
-      if (this->getX() < (int)this->_parentXMax - 2)
+      if (this->getX() < (int)this->_maxX - 2)
         this->setX(this->getX() + 1);
       break;
     default:

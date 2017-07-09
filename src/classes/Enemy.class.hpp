@@ -26,11 +26,14 @@ class Enemy : public Character {
   void moveEnemy();
   void spawn();
   int getBounds();
+  void setStatus(bool status);
+  bool getStatus();
 
 private:
   int _xDirection;
   int _yDirection;
   int _bounds;
+  bool _status;
 };
 
 #endif

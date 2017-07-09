@@ -28,8 +28,6 @@ class Player : public Character {
 
  private:
   bool _exit_requested;
-  unsigned int _parentXMax;
-  unsigned int _parentYMax;
 };
 
 #endif
