@@ -20,6 +20,7 @@
 #include <string>
 #include "Player.class.hpp"
 #include "Asteroids.class.hpp"
+#include "MissileRain.class.hpp"
 
 class Game {
  public:
@@ -31,7 +32,7 @@ class Game {
   WINDOW* wnd;
   void run();
   void screenCheck(Player& master);
-  bool gameCollisions(Player& master, Asteroids& arbiters, MissleRain& bullets);
+  bool gameCollisions(Player& master, Asteroids& arbiters, MissileRain& bullets);
   int xMax;
   int yMax;
 };

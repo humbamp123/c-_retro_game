@@ -88,11 +88,11 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters, MissileRain &bull
       endwin();
       return (1);
     } else {
-      for (int i = 0; i < bullets.getDataSize(); i++) {
-        if (bullets.checkCollision(arbiters.getData()[i].getX(),
+      for (size_t i = 0; i < bullets.getDataSize(); i++) {
+        if (bullets.getData()[i].checkCollision(arbiters.getData()[i].getX(),
                                      arbiters.getData()[i].getY())){
-          bullets.clearSprite();
-          arbiters[i].clearSprite();
+          bullets.getData()[i].clearSprite();
+          arbiters.getData()[i].clearSprite();
         }
       }
     }
@@ -107,7 +107,7 @@ void Game::run() {
   int bulletAmount = 30;
   getmaxyx(this->wnd, ymax, xmax);
   Player master(ymax);
-  Asteroids arbiters(enemyAmount);
+  Asteroids arbiters(enemyAmount, xmax, ymax);
   MissileRain bullets(bulletAmount);
   refresh();  // must be used after any changes have been made
   while (1) {
