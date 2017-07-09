@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:25:13 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 18:28:33 by apineda          ###   ########.fr       */
+/*   Updated: 2017/07/08 18:41:54 by apineda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #include "classes/Player.class.hpp"
 #include "classes/Game.class.hpp"
 
+  WINDOW* wnd;
+
 int main(void) {
   Game newGame;
 
+  newGame.run();
   Player master;
   Player chief(master);
   Player masterchief;
