@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Missile.class.hpp                                  :+:      :+:    :+:   */
+/*   MissileRain.class.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/09 14:11:56 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 15:15:18 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/07/09 14:54:25 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/07/09 15:15:46 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MISSILE_H
-# define MISSILE_H
+#ifndef MISSILE_RAIN_H
+# define MISSILE_RAIN_H
 
-#include "Player.class.hpp"
-#include "Enemy.class.hpp"
+#include <iostream>
+#include "Missile.class.hpp"
 
-class Missile : public Player, public Enemy {
+class MissileRain {
+  MissileRain(void);
  public:
-  Missile(void);
-  Missile(int x, int y);
-  Missile(Missile const & src);
-  Missile & operator=(Missile const &rhs);
-  ~Missile(void);
+  MissileRain(int n);
+  MissileRain(MissileRain const & src);
+  MissileRain & operator=(MissileRain const &rhs);
+  ~MissileRain(void);
 
-  void update(void);
+  Missile *getData() const;
+  unsigned int getDataSize() const;
+  void update();
+ private:
+  Missile *_missileField;
+  unsigned int _size;
 };
 
 #endif
