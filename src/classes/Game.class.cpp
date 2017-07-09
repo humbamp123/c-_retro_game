@@ -14,6 +14,7 @@
 #include "Asteroids.class.hpp"
 #include "Enemy.class.hpp"
 #include "Player.class.hpp"
+#include "MissileRain.class.hpp"
 
 Game::Game() : xMax(0), yMax(0) {
   wnd = initscr();
@@ -80,29 +81,45 @@ void Game::screenCheck(Player &master) {
   }
 }
 
-void Game::gameCollisions(Player &master, Asteroids &arbiters) {
+bool Game::gameCollisions(Player &master, Asteroids &arbiters, MissileRain &bullets) {
   for (size_t i = 0; i < arbiters.getDataSize(); i++) {
     if (master.checkCollision(arbiters.getData()[i].getX(),
                               arbiters.getData()[i].getY())) {
       endwin();
-      exit(0);
+      return (1);
+    } else {
+      for (int i = 0; i < bullets.getDataSize(); i++) {
+        if (bullets.checkCollision(arbiters.getData()[i].getX(),
+                                     arbiters.getData()[i].getY())){
+          bullets.clearSprite();
+          arbiters[i].clearSprite();
+        }
+      }
     }
   }
+  return (0);
 }
 
 void Game::run() {
   unsigned int xmax;
   unsigned int ymax;
-  int size = 100;
+  int enemyAmount = 100;
+  int bulletAmount = 30;
   getmaxyx(this->wnd, ymax, xmax);
   Player master(ymax);
-  Asteroids arbiters(size, xmax, ymax);
+  Asteroids arbiters(enemyAmount);
+  MissileRain bullets(bulletAmount);
   refresh();  // must be used after any changes have been made
   while (1) {
     screenCheck(master);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
-    gameCollisions(master, arbiters);
+    if (master.getFire()) {
+      
+    }
+    if (gameCollisions(master, arbiters, bullets)) {
+      break;
+    }
     arbiters.update();
     master.putSprite();
     refresh();

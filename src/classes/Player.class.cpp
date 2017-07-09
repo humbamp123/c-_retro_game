@@ -23,6 +23,7 @@ Player::Player(unsigned int max_y)
   this->_exit_requested = false;
   this->_x = 1;
   this->_y = max_y / 2;
+  this->_fire = false;
   putSprite();
 #ifdef FT_DEBUG
   std::cout << "Player constructor Called" << std::endl;
@@ -43,12 +44,16 @@ Player::~Player(void) { std::cout << "Player destructor Called" << std::endl; }
 
 bool Player::getExit() { return (this->_exit_requested); }
 
+bool Player::getFire() { return (this->_fire); }
+
 void Player::movePlayer(unsigned int in_char) {
   this->clearSprite();
   switch (in_char) {
     case 'q':
       this->_exit_requested = true;
       break;
+    case ' ':
+      this->_fire = true;
     case KEY_UP:
     case 'w':
     case 'i':

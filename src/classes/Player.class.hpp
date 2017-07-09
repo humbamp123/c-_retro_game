@@ -26,8 +26,10 @@ class Player : virtual public Character {
   void movePlayer(unsigned int in_char);
   bool getExit();
   bool checkCollision(int x, int y);
+  bool getFire();
  private:
   bool _exit_requested;
+  bool _fire;
 };
 
 #endif

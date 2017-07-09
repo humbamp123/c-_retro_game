@@ -24,14 +24,14 @@
 class Game {
  public:
   Game(void);
-  Game(Game const & src);
+  Game(Game const& src);
   Game& operator=(Game const&);
   ~Game(void);
 
   WINDOW* wnd;
   void run();
   void screenCheck(Player& master);
-  void gameCollisions(Player& master, Asteroids& arbiters);
+  bool gameCollisions(Player& master, Asteroids& arbiters, MissleRain& bullets);
   int xMax;
   int yMax;
 };
