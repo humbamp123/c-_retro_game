@@ -12,7 +12,7 @@
 
 #include "Character.class.hpp"
 
-Character::Character(int x, int y, int maxX, int maxY, unsigned int hitPoints,
+Character::Character(int x, int y, int maxX, int maxY, unsigned int level, unsigned int hitPoints,
                      unsigned int maxHitPoints, unsigned int energyPoints,
                      unsigned int maxEnergyPoints, unsigned int attackDamage,
                      char sprite)
@@ -20,6 +20,7 @@ Character::Character(int x, int y, int maxX, int maxY, unsigned int hitPoints,
       _y(y),
       _maxX(maxX),
       _maxY(maxY),
+      _level(level),
       _hitPoints(hitPoints),
       _maxHitPoints(maxHitPoints),
       _energyPoints(energyPoints),
@@ -36,6 +37,7 @@ Character::Character(void)
       _y(1),
       _maxX(0),
       _maxY(0),
+      _level(1),
       _hitPoints(90),
       _maxHitPoints(100),
       _energyPoints(40),
@@ -55,6 +57,7 @@ Character &Character::operator=(Character const &rhs) {
   this->_y = rhs._y;
   this->_x = rhs._maxX;
   this->_y = rhs._maxY;
+  this->_level = rhs._level;
   this->_hitPoints = rhs._hitPoints;
   this->_maxHitPoints = rhs._maxHitPoints;
   this->_energyPoints = rhs._energyPoints;

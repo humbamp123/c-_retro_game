@@ -12,14 +12,14 @@
 
 #include "Player.class.hpp"
 
-Player::Player(void) : Character(1, 1, 0, 0, 90, 100, 40, 50, 5, 'O') {
+Player::Player(void) : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, 'O') {
 #ifdef FT_DEBUG
   std::cout << "Player constructor Called" << std::endl;
 #endif
 }
 
 Player::Player(unsigned int max_y)
-    : Character(1, 1, 0, 0, 90, 100, 40, 50, 5, 'O') {
+    : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, 'O') {
   this->_exit_requested = false;
   this->_x = 1;
   this->_y = max_y / 2;

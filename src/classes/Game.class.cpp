@@ -85,14 +85,17 @@ void Game::run() {
   unsigned int ymax;
   getmaxyx(this->wnd, ymax, xmax);
   Player master(ymax);
+  Enemy arbiter(xmax, ymax);
   refresh();  // must be used after any changes have been made
+
   while (1) {
     screenCheck(master);
-    Enemy arbiter;
     usleep(30000);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
+    arbiter.moveEnemy();
     master.putSprite();
+    arbiter.putSprite();
     refresh();
     if (master.getExit() == true) break;
   }
