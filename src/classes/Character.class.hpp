@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:45:42 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 18:02:28 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/08 19:27:57 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ class Character {
  public:
   Character(unsigned int x, unsigned int y, unsigned int hitPoints,
             unsigned int maxHitPoints, unsigned int energyPoints,
-            unsigned int maxEnergyPoints, unsigned int attackDamage);
+            unsigned int maxEnergyPoints, unsigned int attackDamage,
+            char sprite);
   Character(void);
   Character(Character const &src);
   Character &operator=(Character const &rhs);
@@ -32,7 +33,7 @@ class Character {
   unsigned int getEnergyPoints(void);
   unsigned int getMaxEnergyPoints(void);
   unsigned int getAttackDamage(void);
-
+  char getSprite(void);
  protected:
   unsigned int _x;
   unsigned int _y;
@@ -41,6 +42,7 @@ class Character {
   unsigned int _energyPoints;
   unsigned int _maxEnergyPoints;
   unsigned int _attackDamage;
+  char _sprite;
 };
 
 #endif

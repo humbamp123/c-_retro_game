@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apineda <apineda@student.42.fr>            +#+  +:+       +#+         #
+#    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 19:10:41 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/07/08 18:37:10 by apineda          ###   ########.fr        #
+#    Updated: 2017/07/08 18:52:46 by gguiulfo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,13 @@ CLASSHDRS		:= $(addsuffix .hpp, $(CLASSFILES))
 HDRS				:= $(addprefix src/classes/, $(CLASSHDRS))
 LIBS				:=
 
+#
+NB			=	$(words $(FILES))
+INDEX		=	0
+LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
+DELTA		=	$$(echo "$$(tput cols)-31-$(LEN_NAME)"|bc)
+SHELL		:= /bin/bash
+
 .PHONY = all format clean fclean re
 # Rules
 all:
@@ -41,8 +48,14 @@ obj:
 	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.cpp Makefile | $(OBJDIR)
+	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
+	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
+	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB) - 1))))
+	@$(eval COLOR=$(shell list=(160 196 202 208 215 221 226 227 190 154 118 82 46); index=$$(($(PERCENT) * $${#list[@]} / 100)); echo "$${list[$$index]}"))
+	@printf "\r\033[38;5;%dm⌛ [%s]: %2d%% `printf '█%.0s' {0..$(DONE)}`%*s❙%*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(DELTA) $(DELTA) "$(shell echo "$@" | sed 's/^.*\///')"
 	@mkdir -p $(dir $@)
 	@$(CXX) -c $(CXXFLAGS) $< -o $@
+	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 $(NAME): $(OBJ) $(HDRS)
 	@$(CXX) $(LDFLAGS) $(OBJ) $(LIBS) -o $@

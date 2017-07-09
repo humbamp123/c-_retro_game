@@ -6,13 +6,13 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:00:50 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 17:58:18 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/08 19:25:13 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Player.class.hpp"
 
-Player::Player(void) : Character(21, 42, 90, 100, 40, 50, 5) {
+Player::Player(void) : Character(21, 42, 90, 100, 40, 50, 5, 'O') {
   std::cout << "Player constructor Called" << std::endl;
 }
 

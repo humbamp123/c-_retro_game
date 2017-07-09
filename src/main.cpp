@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apineda <apineda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:25:13 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 18:41:54 by apineda          ###   ########.fr       */
+/*   Updated: 2017/07/08 19:28:37 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
   WINDOW* wnd;
 
 int main(void) {
-  Game newGame;
+  // Game newGame;
 
-  newGame.run();
+  // newGame.run();
   Player master;
   Player chief(master);
   Player masterchief;
@@ -32,6 +32,7 @@ int main(void) {
   std::cout << masterchief.getEnergyPoints() << std::endl;
   std::cout << masterchief.getMaxEnergyPoints() << std::endl;
   std::cout << masterchief.getAttackDamage() << std::endl;
+  std::cout << masterchief.getSprite() << std::endl;
 
   std::cout << "--------------------------" << std::endl;
 
@@ -46,6 +47,6 @@ int main(void) {
   std::cout << halo.getMaxHitPoints() << std::endl;
   std::cout << halo.getEnergyPoints() << std::endl;
   std::cout << halo.getMaxEnergyPoints() << std::endl;
-  std::cout << halo.getAttackDamage() << std::endl;
+  std::cout << halo.getSprite() << std::endl;
   return (0);
 }

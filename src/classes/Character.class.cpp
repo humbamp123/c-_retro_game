@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:41:24 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 18:01:35 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/08 19:28:15 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 Character::Character(unsigned int x, unsigned int y, unsigned int hitPoints,
                      unsigned int maxHitPoints, unsigned int energyPoints,
-                     unsigned int maxEnergyPoints, unsigned int attackDamage)
+                     unsigned int maxEnergyPoints, unsigned int attackDamage,
+                     char sprite)
     : _x(x),
       _y(y),
       _hitPoints(hitPoints),
       _maxHitPoints(maxHitPoints),
       _energyPoints(energyPoints),
       _maxEnergyPoints(maxEnergyPoints),
-      _attackDamage(attackDamage) {
+      _attackDamage(attackDamage),
+      _sprite(sprite) {
   std::cout << "Character constructor Called" << std::endl;
 }
 
@@ -32,7 +34,8 @@ Character::Character(void)
       _maxHitPoints(100),
       _energyPoints(40),
       _maxEnergyPoints(50),
-      _attackDamage(5) {
+      _attackDamage(5),
+      _sprite('X') {
   std::cout << "Character default constructor Called" << std::endl;
 }
 
@@ -49,6 +52,7 @@ Character &Character::operator=(Character const &rhs) {
   this->_energyPoints = rhs._energyPoints;
   this->_maxEnergyPoints = rhs._maxEnergyPoints;
   this->_attackDamage = rhs._attackDamage;
+  this->_sprite = rhs._sprite;
   std::cout << "Character '=' operator called" << std::endl;
   return (*this);
 }
@@ -71,3 +75,5 @@ unsigned int Character::getMaxEnergyPoints(void) {
 }
 
 unsigned int Character::getAttackDamage(void) { return (this->_attackDamage); }
+
+char Character::getSprite(void) { return (this->_sprite); }
