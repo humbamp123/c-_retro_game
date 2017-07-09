@@ -16,11 +16,13 @@ Asteroids::Asteroids(void) : _size(0) {
   std::cout << "Asteroid Default Constructor called" << std::endl;
 }
 
-Asteroids::Asteroids(int n) : _size(n) {
+Asteroids::Asteroids(int n, int xmax, int ymax) : _size(n) {
   this->_asteroidField = new Enemy[n];
   int i = 0;
-  while (i < n)
-    Enemy(i).spawn();
+  while (i < n) {
+    this->_asteroidField[i].setXYMax(xmax, ymax);
+    this->_asteroidField[i].spawn();
+  }
   std::cout << "Asteroid Field Created" << std::endl;
 }
 
@@ -43,9 +45,11 @@ Enemy *Asteroids::getData() const { return (_asteroidField); }
 unsigned int Asteroids::getDataSize() const { return (_size); }
 
 void Asteroids::update() {
-  for (size_t i = 0; i < this.getDataSize(); i++) {
-    if (this->_asteroidField[i].getY() > this->_asteroidField[i].getBounds()) {
+  for (size_t i = 0; i < this->getDataSize(); i++) {
+    if (this->_asteroidField[i].getY() > 1) {
+      this->_asteroidField[i].clearSprite();
       this->_asteroidField[i].spawn();
     }
+    this->_asteroidField[i].moveEnemy();
   }
 }

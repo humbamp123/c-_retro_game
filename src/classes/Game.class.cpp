@@ -13,6 +13,7 @@
 #include "Game.class.hpp"
 #include "Enemy.class.hpp"
 #include "Player.class.hpp"
+#include "Asteroids.class.hpp"
 
 Game::Game() : xMax(0), yMax(0) {
   wnd = initscr();
@@ -84,9 +85,8 @@ void Game::run() {
   int size = 100;
   getmaxyx(this->wnd, ymax, xmax);
   Player master(ymax);
-  Astroids arbiters(size, xmax, ymax);
+  Asteroids arbiters(size, xmax, ymax);
   refresh();  // must be used after any changes have been made
-
   while (1) {
     screenCheck(master);
     usleep(30000);

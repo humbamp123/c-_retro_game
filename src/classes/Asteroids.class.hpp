@@ -20,7 +20,7 @@
 class Asteroids {
   Asteroids(void);
  public:
-  Asteroids(int n);
+  Asteroids(int n, int xmax, int ymax);
   Asteroids(Asteroids const & src);
   Asteroids & operator=(Asteroids const &rhs);
   ~Asteroids(void);
