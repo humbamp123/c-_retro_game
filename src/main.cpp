@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:25:13 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 18:24:31 by apineda          ###   ########.fr       */
+/*   Updated: 2017/07/08 18:28:33 by apineda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 #include "classes/Game.class.hpp"
 
 int main(void) {
-  int init_status = init();
+  Game newGame;
 
-  if(init_status == 0)
-    Game newGame;
-  else
-    return (0);
   Player master;
   Player chief(master);
   Player masterchief;

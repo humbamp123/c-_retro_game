@@ -13,6 +13,7 @@
 #include "Game.class.hpp"
 
 Game::Game() {
+  WINDOW* wnd;
   wnd = initscr();
   cbreak(); //Allows user typed characters to be immediately available
   noecho(); // does not echo any characters grabbed by getch
@@ -33,6 +34,10 @@ Game::Game() {
   attron(A_BOLD); //Activates an atribute for the drawing, Bold in this case
   box(wnd, 0, 0); //One way to draw a border
   attroff(A_BOLD); //Deactivates an atribute for the drawing, Bold in this case
+}
+
+Game &Game::operator=(Game const &) {
+  return (*this);
 }
 
 Game::~Game(){

@@ -18,14 +18,12 @@
 #include <stdlib.h>
 #include <iostream>
 
-WINDOW* wnd;
-
 class Game
 {
 public:
   Game();
   Game(std::string name);
-  Game(Game const&);
+  Game& operator=(Game const &);
   ~Game();
 
   void run();
