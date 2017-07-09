@@ -12,7 +12,7 @@
 
 #include "classes/Game.class.hpp"
 
-  WINDOW* wnd;
+WINDOW* wnd;
 
 int main(void) {
   Game newGame;

@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:00:50 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 20:55:08 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 00:44:55 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ Player::Player(void) : Character(21, 42, 90, 100, 40, 50, 5, 'O') {
 #endif
 }
 
-Player::Player(unsigned int max_y) : Character(21, 42, 90, 100, 40, 50, 5, 'O') {
-this->_exit_requested = false;
-this->_x = 1;
-this->_y = max_y / 2;
-putSprite();
+Player::Player(unsigned int max_y)
+    : Character(21, 42, 90, 100, 40, 50, 5, 'O') {
+  this->_exit_requested = false;
+  this->_x = 1;
+  this->_y = max_y / 2;
+  putSprite();
 #ifdef FT_DEBUG
   std::cout << "Player constructor Called" << std::endl;
 #endif
@@ -42,7 +43,7 @@ Player::~Player(void) { std::cout << "Player destructor Called" << std::endl; }
 
 bool Player::getExit() { return (this->_exit_requested); }
 
-unsigned int Player::getParentXMax() { return (this->_parentXMax);}
+unsigned int Player::getParentXMax() { return (this->_parentXMax); }
 
 unsigned int Player::getParentYMax() { return (this->_parentYMax); }
 
@@ -51,8 +52,8 @@ void Player::setParentXYMax(unsigned int xmax, unsigned int ymax) {
   this->_parentYMax = ymax;
 }
 
-void Player::movePlayer(Player &src, unsigned int in_char) {
-  src.clearSprite();
+void Player::movePlayer(unsigned int in_char) {
+  this->clearSprite();
   switch (in_char) {
     case 'q':
       this->_exit_requested = true;
@@ -60,22 +61,24 @@ void Player::movePlayer(Player &src, unsigned int in_char) {
     case KEY_UP:
     case 'w':
     case 'i':
-      if (src.getY() > 0 + 1) src.setY(src.getY() - 1);
+      if (this->getY() > 0 + 1) this->setY(this->getY() - 1);
       break;
     case KEY_DOWN:
     case 's':
     case 'k':
-      if (src.getY() < this->_parentYMax - 2) src.setY(src.getY() + 1);
+      if (this->getY() < (int)this->_parentYMax - 2)
+        this->setY(this->getY() + 1);
       break;
     case KEY_LEFT:
     case 'a':
     case 'j':
-      if (src.getX() > 1) src.setX(src.getX() - 1);
+      if (this->getX() > 1) this->setX(this->getX() - 1);
       break;
     case KEY_RIGHT:
     case 'd':
     case 'l':
-      if (src.getX() < this->_parentXMax - 2) src.setX(src.getX() + 1);
+      if (this->getX() < (int)this->_parentXMax - 2)
+        this->setX(this->getX() + 1);
       break;
     default:
       break;

@@ -13,27 +13,25 @@
 #ifndef GAME_CLASS_H
 #define GAME_CLASS_H
 
-#include <unistd.h>
-#include <string>
 #include <ncurses.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <iostream>
+#include <string>
 #include "Player.class.hpp"
 
-class Game
-{
-public:
+class Game {
+ public:
   Game();
   Game(std::string name);
-  Game& operator=(Game const &);
+  Game& operator=(Game const&);
   ~Game();
 
   WINDOW* wnd;
   void run();
-  void screenCheck(Player & master);
+  void screenCheck(Player& master);
   unsigned int xMax;
   unsigned int yMax;
 };
-
 
 #endif

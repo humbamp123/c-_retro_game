@@ -6,13 +6,13 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:41:24 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 20:58:06 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 00:46:33 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.class.hpp"
 
-Character::Character(unsigned int x, unsigned int y, unsigned int hitPoints,
+Character::Character(int x, int y, unsigned int hitPoints,
                      unsigned int maxHitPoints, unsigned int energyPoints,
                      unsigned int maxEnergyPoints, unsigned int attackDamage,
                      char sprite)
@@ -62,13 +62,13 @@ Character::~Character(void) {
   std::cout << "Character destructor Called" << std::endl;
 }
 
-unsigned int Character::getX(void) { return (this->_x); }
+int Character::getX(void) { return (this->_x); }
 
-void Character::setX(unsigned int x) { this->_x = x; }
+void Character::setX(int x) { this->_x = x; }
 
-unsigned int Character::getY(void) { return (this->_y); }
+int Character::getY(void) { return (this->_y); }
 
-void Character::setY(unsigned int y) { this->_y = y; }
+void Character::setY(int y) { this->_y = y; }
 
 unsigned int Character::getHitPoints(void) { return (this->_hitPoints); }
 
@@ -84,10 +84,6 @@ unsigned int Character::getAttackDamage(void) { return (this->_attackDamage); }
 
 char Character::getSprite(void) { return (this->_sprite); }
 
-void Character::clearSprite(void) {
-  mvaddch(this->_y, this->_x, ' ');
-}
+void Character::clearSprite(void) { mvaddch(this->_y, this->_x, ' '); }
 
-void Character::putSprite(void) {
-  mvaddch(this->_y, this->_x, this->_sprite);
-}
+void Character::putSprite(void) { mvaddch(this->_y, this->_x, this->_sprite); }

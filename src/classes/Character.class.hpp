@@ -6,29 +6,28 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:45:42 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 00:38:07 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 00:46:59 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_CLASS_H
 #define CHARACTER_CLASS_H
 
-#include <iostream>
 #include <ncurses.h>
+#include <iostream>
 
 class Character {
  public:
-  Character(int x, int y, unsigned int hitPoints,
-            unsigned int maxHitPoints, unsigned int energyPoints,
-            unsigned int maxEnergyPoints, unsigned int attackDamage,
-            char sprite);
+  Character(int x, int y, unsigned int hitPoints, unsigned int maxHitPoints,
+            unsigned int energyPoints, unsigned int maxEnergyPoints,
+            unsigned int attackDamage, char sprite);
   Character(void);
   Character(Character const &src);
   Character &operator=(Character const &rhs);
   ~Character(void);
 
   int getX(void);
-  void setX(unsigned int x);
+  void setX(int x);
   int getY(void);
   void setY(int y);
   unsigned int getHitPoints(void);
@@ -39,6 +38,7 @@ class Character {
   char getSprite(void);
   void clearSprite(void);
   void putSprite(void);
+
  protected:
   int _x;
   int _y;

@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:35:27 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 18:02:56 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 00:47:50 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Player : public Character {
   Player(Player const &src);
   Player &operator=(Player const &rhs);
   ~Player(void);
-  void movePlayer(Player &srd, unsigned int in_char);
+  void movePlayer(unsigned int in_char);
   bool getExit();
   unsigned int getParentXMax();
   unsigned int getParentYMax();

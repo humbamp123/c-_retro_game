@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/08 21:06:29 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 00:54:33 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ void Game::run() {
   while (1) {
     screenCheck(master);
     // Enemy arbiter;
+    usleep(30000);
     unsigned int in_char = wgetch(this->wnd);
-    master.movePlayer(master, in_char);
+    master.movePlayer(in_char);
     master.putSprite();
     refresh();
     if (master.getExit() == true) break;
