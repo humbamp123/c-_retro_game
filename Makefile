@@ -6,7 +6,7 @@
 #    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 19:10:41 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/07/08 18:24:59 by gguiulfo         ###   ########.fr        #
+#    Updated: 2017/07/08 18:26:47 by gguiulfo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CLASSFILES	:= Character.class Player.class Enemy.class
 FILES				:= $(addprefix classes/, $(CLASSFILES)) $(SRCFILES)
 SRC					:= $(addprefix $(SRCDIR)/, $(addsuffix .cpp, $(FILES)))
 OBJ					:= $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRC:.cpp=.o))
-CLASSHDRS		:= Character.class.hpp Player.class.hpp Enemy.class.hpp
+CLASSHDRS		:= $(addsuffix .hpp, $(CLASSFILES))
 # INCHDRS			:=
 HDRS				:= $(addprefix src/classes/, $(CLASSHDRS))
 LIBS				:=
