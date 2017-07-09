@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 14:39:18 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:40:27 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void Game::run() {
     master.putSprite();
     refresh();
     if (master.getExit() == true) break;
-    usleep(10000);
+    usleep(30000);
   }
 }
 
