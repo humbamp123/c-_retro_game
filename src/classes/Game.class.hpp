@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Game.hpp                                           :+:      :+:    :+:   */
+/*   Game.class.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apineda <apineda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:50:22 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/08 17:24:48 by apineda          ###   ########.fr       */
+/*   Updated: 2017/07/08 21:05:32 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_CLASS_H
 #define GAME_CLASS_H
 
+#include <unistd.h>
 #include <string>
 #include <ncurses.h>
 #include <stdlib.h>
@@ -26,6 +27,7 @@ public:
   Game& operator=(Game const &);
   ~Game();
 
+  WINDOW* wnd;
   void run();
 
 };

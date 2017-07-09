@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Game.cpp                                           :+:      :+:    :+:   */
+/*   Game.class.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apineda <apineda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/08 17:22:25 by apineda          ###   ########.fr       */
+/*   Updated: 2017/07/08 21:06:29 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "Game.class.hpp"
 
 Game::Game() {
-  WINDOW* wnd;
   wnd = initscr();
   cbreak(); //Allows user typed characters to be immediately available
   noecho(); // does not echo any characters grabbed by getch
@@ -50,9 +49,22 @@ Game::~Game(){
 void Game::run() {
   Player master;
   refresh(); //must be used after any changes have been made
-
+  int xmax;
+  int ymax;
+  getmaxyx(this->wnd, xmax, ymax);
   while(1) {
-    Enemy arbiter;
+    // Enemy arbiter;
+    master.setX(0);
+    master.setY(0);
+
+    for (int i = 0; i < ymax; i++) {
+      master.clearSprite();
+      master.setX(i);
+      master.setY(5);
+      usleep(100000);
+      master.putSprite();
+      refresh();
+    }
   }
 }
 

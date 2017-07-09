@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:45:42 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 19:27:57 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/08 20:53:01 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CHARACTER_CLASS_H
 
 #include <iostream>
+#include <ncurses.h>
 
 class Character {
  public:
@@ -27,13 +28,17 @@ class Character {
   ~Character(void);
 
   unsigned int getX(void);
+  void setX(unsigned int x);
   unsigned int getY(void);
+  void setY(unsigned int y);
   unsigned int getHitPoints(void);
   unsigned int getMaxHitPoints(void);
   unsigned int getEnergyPoints(void);
   unsigned int getMaxEnergyPoints(void);
   unsigned int getAttackDamage(void);
   char getSprite(void);
+  void clearSprite(void);
+  void putSprite(void);
  protected:
   unsigned int _x;
   unsigned int _y;

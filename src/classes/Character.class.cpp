@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:41:24 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 19:28:15 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/08 20:58:06 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ Character::Character(unsigned int x, unsigned int y, unsigned int hitPoints,
       _maxEnergyPoints(maxEnergyPoints),
       _attackDamage(attackDamage),
       _sprite(sprite) {
+#ifdef FT_DEBUG
   std::cout << "Character constructor Called" << std::endl;
+#endif
 }
 
 Character::Character(void)
@@ -62,7 +64,11 @@ Character::~Character(void) {
 
 unsigned int Character::getX(void) { return (this->_x); }
 
+void Character::setX(unsigned int x) { this->_x = x; }
+
 unsigned int Character::getY(void) { return (this->_y); }
+
+void Character::setY(unsigned int y) { this->_y = y; }
 
 unsigned int Character::getHitPoints(void) { return (this->_hitPoints); }
 
@@ -77,3 +83,11 @@ unsigned int Character::getMaxEnergyPoints(void) {
 unsigned int Character::getAttackDamage(void) { return (this->_attackDamage); }
 
 char Character::getSprite(void) { return (this->_sprite); }
+
+void Character::clearSprite(void) {
+  mvaddch(this->_y, this->_x, ' ');
+}
+
+void Character::putSprite(void) {
+  mvaddch(this->_y, this->_x, this->_sprite);
+}
