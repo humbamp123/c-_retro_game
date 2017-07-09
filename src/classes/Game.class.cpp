@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 00:54:33 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 12:01:44 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include "Enemy.class.hpp"
 #include "Player.class.hpp"
 
-Game::Game() {
-  this->xMax = 0;
-  this->yMax = 0;
+Game::Game() : xMax(0), yMax(0) {
   wnd = initscr();
   cbreak();   // Allows user typed characters to be immediately available
   noecho();   // does not echo any characters grabbed by getch
@@ -25,19 +23,19 @@ Game::Game() {
   keypad(wnd, true);   // Allows keys to be interpreted for actions
   nodelay(wnd, true);  // This diables stoping everything when using wgetch()
   curs_set(0);         // Makes the cursor visible or invisible
-  if (!has_colors())   // Macro to check if the terminal supports color
-  {
+  if (!has_colors()) {   // Macro to check if the terminal supports color
     endwin();
-    std::cout << "ERROR: Terminal does not support color." << std::endl;
+    std::cout << "Error: Terminal does not support color." << std::endl;
     exit(1);
   }
   // start_color(); // Allows color changes
-  // init_pair(1, COLOR_BLACK, COLOR_CYAN); // Takes two colors into a number
-  // wbkgd(wnd, COLOR_PAIR(1)); // sets the background color
+
   attron(A_BOLD);   // Activates an atribute for the drawing, Bold in this case
   box(wnd, 0, 0);   // One way to draw a border
   attroff(A_BOLD);  // Deactivates an atribute for the drawing, Bold in this
                     // case
+  // init_pair(1, COLOR_BLACK, COLOR_CYAN); // Takes two colors into a number
+  // wbkgd(wnd, COLOR_PAIR(1)); // sets the background color
 }
 
 Game &Game::operator=(Game const &) { return (*this); }
@@ -64,7 +62,7 @@ Game::~Game() { endwin(); }
 //       draw_borders(score);
 //     }  // draw
 //     mvwprintw(field, 1, 1, "Field");
-//     mvwprintw(score, 1, 1, "Score");  // refresh each window 
+//     mvwprintw(score, 1, 1, "Score");  // refresh each window
 //     wrefresh(field);
 //     wrefresh(score);
 //   }  // ...
@@ -94,6 +92,12 @@ void Game::run() {
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
     arbiter.moveEnemy();
+    // for (size_t i = 0; i < asteroids.getData().size(); i++) {
+    //     if (player.bounds.contains(asteroids.getData().at(i).getPos())) {
+    //         asteroids.erase(i);
+    //     }
+    // }
+
     master.putSprite();
     arbiter.putSprite();
     refresh();

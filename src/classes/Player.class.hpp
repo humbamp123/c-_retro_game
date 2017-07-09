@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:35:27 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 00:47:50 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 11:59:42 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include "Character.class.hpp"
 
 class Player : public Character {
- public:
   Player(void);
+ public:
   Player(unsigned int max_y);
   Player(Player const &src);
   Player &operator=(Player const &rhs);
