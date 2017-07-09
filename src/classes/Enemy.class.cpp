@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Enemy.class.hpp"
+#include <unistd.h>
 
 Enemy::Enemy(void) : Character(10, 84, 0, 0, 1, 190, 200, 140, 150, 15, 'X') {
 #ifdef FT_DEBUG
@@ -60,8 +61,8 @@ void Enemy::spawn(void) {
 int Enemy::getBounds(void) { return( this->_bounds); }
 
 void Enemy::moveEnemy(void) {
+  clearSprite();
   this->_x += this->_xDirection;
   this->_y += this->_yDirection;
-  std::cout << this->_x << std::endl;
-  std::cout << this->_y << std::endl;
+  putSprite();
 }

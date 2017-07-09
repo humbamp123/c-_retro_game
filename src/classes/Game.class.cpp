@@ -82,14 +82,16 @@ void Game::screenCheck(Player &master) {
 void Game::run() {
   unsigned int xmax;
   unsigned int ymax;
-  int size = 100;
+  int size = 10;
+  int tick;
   getmaxyx(this->wnd, ymax, xmax);
   Player master(ymax);
   Asteroids arbiters(size, xmax, ymax);
   refresh();  // must be used after any changes have been made
+  tick = 0;
   while (1) {
     screenCheck(master);
-    usleep(30000);
+    usleep(10000);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
     // for (size_t i = 0; i < asteroids.getData().size(); i++) {
@@ -97,9 +99,12 @@ void Game::run() {
     //         asteroids.erase(i);
     //     }
     // }
+    if (tick > 100 && tick % 20 == 0)
+      arbiters.update();
     master.putSprite();
     refresh();
     if (master.getExit() == true) break;
+    tick++;
   }
 }
 

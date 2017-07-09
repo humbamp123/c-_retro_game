@@ -18,10 +18,8 @@ Asteroids::Asteroids(void) : _size(0) {
 
 Asteroids::Asteroids(int n, int xmax, int ymax) : _size(n) {
   this->_asteroidField = new Enemy[n];
-  int i = 0;
-  while (i < n) {
+  for (int i = 0; i < n; i++){
     this->_asteroidField[i].setXYMax(xmax, ymax);
-    this->_asteroidField[i].spawn();
   }
   std::cout << "Asteroid Field Created" << std::endl;
 }
@@ -46,10 +44,10 @@ unsigned int Asteroids::getDataSize() const { return (_size); }
 
 void Asteroids::update() {
   for (size_t i = 0; i < this->getDataSize(); i++) {
-    if (this->_asteroidField[i].getY() > 1) {
+    if (this->_asteroidField[i].getX() == 1 && this->_asteroidField == false) {
       this->_asteroidField[i].clearSprite();
       this->_asteroidField[i].spawn();
-    }
+    } else if (this)
     this->_asteroidField[i].moveEnemy();
   }
 }
