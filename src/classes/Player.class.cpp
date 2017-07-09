@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:00:50 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 12:00:16 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:07:51 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,8 @@ void Player::movePlayer(unsigned int in_char) {
     default:
       break;
   }
+}
+
+bool Player::checkCollision(int x, int y) {
+  return (this->_x == x && this->_y == y);
 }

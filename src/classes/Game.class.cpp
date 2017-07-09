@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 12:01:44 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:12:25 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ Game::Game() : xMax(0), yMax(0) {
                     // case
   // init_pair(1, COLOR_BLACK, COLOR_CYAN); // Takes two colors into a number
   // wbkgd(wnd, COLOR_PAIR(1)); // sets the background color
+}
+
+Game(Game const & src) {
+  *this = src;
 }
 
 Game &Game::operator=(Game const &) { return (*this); }
@@ -94,11 +98,13 @@ void Game::run() {
     usleep(10000);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
-    // for (size_t i = 0; i < asteroids.getData().size(); i++) {
-    //     if (player.bounds.contains(asteroids.getData().at(i).getPos())) {
-    //         asteroids.erase(i);
-    //     }
-    // }
+    for (size_t i = 0; i < arbiters.getDataSize(); i++) {
+        if (master.checkCollision(arbiters.getData()[i].getX(),
+                                  arbiters.getData()[i].getY())) {
+            endwin();
+            exit(0);
+        }
+    }
     arbiters.update();
     master.putSprite();
     refresh();

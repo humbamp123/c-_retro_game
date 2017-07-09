@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Player.class.hpp                                   :+:      :+:    :+:   */
+/*   Missile.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/08 16:35:27 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 14:07:14 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/07/09 14:11:56 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/07/09 14:13:58 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_CLASS_H
-#define PLAYER_CLASS_H
+#ifndef MISSILE_H
+# define MISSILE_H
 
-#include <iostream>
-#include "Character.class.hpp"
-
-class Player : public Character {
-  Player(void);
+class Missile : public player, public enemy {
  public:
-  Player(unsigned int max_y);
-  Player(Player const &src);
-  Player &operator=(Player const &rhs);
-  ~Player(void);
-  void movePlayer(unsigned int in_char);
-  bool getExit();
-  bool checkCollision(int x, int y);
+  Missile(void);
+  Missile(Missile const & src);
+  Missile & operator=(Missile const &rhs);
+  ~Missile(void);
  private:
-  bool _exit_requested;
 };
 
 #endif
