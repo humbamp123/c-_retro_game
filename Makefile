@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
+#    By: apineda <apineda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 19:10:41 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/07/08 18:26:47 by gguiulfo         ###   ########.fr        #
+#    Updated: 2017/07/08 18:37:10 by apineda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ NAME			:= ft_retro
 CXX				:= clang++
 CXXFLAGS 	+= -std=c++98
 CXXFLAGS	+= -Wall -Wextra -Werror
-LDFLAGS 	+= -Wall -Wextra -Werror
+LDFLAGS 	+= -Wall -Wextra -Werror -lncurses
 
 # Files
 SRCDIR			:= src/
 OBJDIR			:= obj/
 SRCFILES		:= main
-CLASSFILES	:= Character.class Player.class Enemy.class
+CLASSFILES	:= Character.class Player.class Enemy.class Game.class
 FILES				:= $(addprefix classes/, $(CLASSFILES)) $(SRCFILES)
 SRC					:= $(addprefix $(SRCDIR)/, $(addsuffix .cpp, $(FILES)))
 OBJ					:= $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRC:.cpp=.o))
