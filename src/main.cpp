@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "classes/Player.class.hpp"
 #include "classes/Enemy.class.hpp"
+#include "classes/Player.class.hpp"
 
 int main(void) {
   Player master;
@@ -41,5 +41,5 @@ int main(void) {
   std::cout << halo.getEnergyPoints() << std::endl;
   std::cout << halo.getMaxEnergyPoints() << std::endl;
   std::cout << halo.getAttackDamage() << std::endl;
-	return (0);
+  return (0);
 }

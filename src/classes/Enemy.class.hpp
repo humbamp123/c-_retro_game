@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef ENEMY_CLASS_H
-# define ENEMY_CLASS_H
+#define ENEMY_CLASS_H
 
 #include <iostream>
 #include "Character.class.hpp"
@@ -19,8 +19,8 @@
 class Enemy : public Character {
  public:
   Enemy(void);
-  Enemy(Enemy const & src);
-  Enemy & operator=(Enemy const &rhs);
+  Enemy(Enemy const &src);
+  Enemy &operator=(Enemy const &rhs);
   ~Enemy(void);
 };
 

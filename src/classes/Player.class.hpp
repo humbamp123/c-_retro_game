@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef PLAYER_CLASS_H
-# define PLAYER_CLASS_H
+#define PLAYER_CLASS_H
 
 #include <iostream>
 #include "Character.class.hpp"
@@ -19,8 +19,8 @@
 class Player : public Character {
  public:
   Player(void);
-  Player(Player const & src);
-  Player & operator=(Player const &rhs);
+  Player(Player const &src);
+  Player &operator=(Player const &rhs);
   ~Player(void);
 };
 

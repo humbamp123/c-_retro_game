@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef CHARACTER_CLASS_H
-# define CHARACTER_CLASS_H
+#define CHARACTER_CLASS_H
 
 #include <iostream>
 
@@ -21,8 +21,8 @@ class Character {
             unsigned int maxHitPoints, unsigned int energyPoints,
             unsigned int maxEnergyPoints, unsigned int attackDamage);
   Character(void);
-  Character(Character const & src);
-  Character & operator=(Character const &rhs);
+  Character(Character const &src);
+  Character &operator=(Character const &rhs);
   ~Character(void);
 
   unsigned int getX(void);
@@ -32,6 +32,7 @@ class Character {
   unsigned int getEnergyPoints(void);
   unsigned int getMaxEnergyPoints(void);
   unsigned int getAttackDamage(void);
+
  protected:
   unsigned int _x;
   unsigned int _y;

@@ -12,20 +12,18 @@
 
 #include "Enemy.class.hpp"
 
-Enemy::Enemy(void) :  Character(10, 84, 190, 200, 140, 150, 15) {
+Enemy::Enemy(void) : Character(10, 84, 190, 200, 140, 150, 15) {
   std::cout << "Enemy constructor Called" << std::endl;
 }
 
-Enemy::Enemy(Enemy const & src) : Character(src) {
+Enemy::Enemy(Enemy const &src) : Character(src) {
   std::cout << "Enemy copy constructor called" << std::endl;
 }
 
-Enemy & Enemy::operator=(Enemy const &rhs) {
+Enemy &Enemy::operator=(Enemy const &rhs) {
   Character::operator=(rhs);
   std::cout << "Enemy '=' operator called" << std::endl;
   return (*this);
 }
 
-Enemy::~Enemy(void) {
-  std::cout << "Enemy destructor Called" << std::endl;
-}
+Enemy::~Enemy(void) { std::cout << "Enemy destructor Called" << std::endl; }

@@ -14,33 +14,34 @@
 
 Character::Character(unsigned int x, unsigned int y, unsigned int hitPoints,
                      unsigned int maxHitPoints, unsigned int energyPoints,
-                     unsigned int maxEnergyPoints, unsigned int attackDamage) :
-                     _x(x),
-                     _y(y),
-                     _hitPoints(hitPoints),
-                     _maxHitPoints(maxHitPoints),
-                     _energyPoints(energyPoints),
-                     _maxEnergyPoints(maxEnergyPoints),
-                     _attackDamage(attackDamage) {
+                     unsigned int maxEnergyPoints, unsigned int attackDamage)
+    : _x(x),
+      _y(y),
+      _hitPoints(hitPoints),
+      _maxHitPoints(maxHitPoints),
+      _energyPoints(energyPoints),
+      _maxEnergyPoints(maxEnergyPoints),
+      _attackDamage(attackDamage) {
   std::cout << "Character constructor Called" << std::endl;
 }
 
-Character::Character(void) :  _x(21),
-                              _y(42),
-                              _hitPoints(90),
-                              _maxHitPoints(100),
-                              _energyPoints(40),
-                              _maxEnergyPoints(50),
-                              _attackDamage(5) {
+Character::Character(void)
+    : _x(21),
+      _y(42),
+      _hitPoints(90),
+      _maxHitPoints(100),
+      _energyPoints(40),
+      _maxEnergyPoints(50),
+      _attackDamage(5) {
   std::cout << "Character default constructor Called" << std::endl;
 }
 
-Character::Character(Character const & src) {
+Character::Character(Character const &src) {
   *this = src;
   std::cout << "Character copy constructor called" << std::endl;
 }
 
-Character & Character::operator=(Character const &rhs) {
+Character &Character::operator=(Character const &rhs) {
   this->_x = rhs._x;
   this->_y = rhs._y;
   this->_hitPoints = rhs._hitPoints;
@@ -55,30 +56,18 @@ Character::~Character(void) {
   std::cout << "Character destructor Called" << std::endl;
 }
 
-unsigned int Character::getX(void) {
-  return (this->_x);
-}
+unsigned int Character::getX(void) { return (this->_x); }
 
-unsigned int Character::getY(void) {
-  return (this->_y);
-}
+unsigned int Character::getY(void) { return (this->_y); }
 
-unsigned int Character::getHitPoints(void) {
-  return (this->_hitPoints);
-}
+unsigned int Character::getHitPoints(void) { return (this->_hitPoints); }
 
-unsigned int Character::getMaxHitPoints(void) {
-  return (this->_maxHitPoints);
-}
+unsigned int Character::getMaxHitPoints(void) { return (this->_maxHitPoints); }
 
-unsigned int Character::getEnergyPoints(void) {
-  return (this->_energyPoints);
-}
+unsigned int Character::getEnergyPoints(void) { return (this->_energyPoints); }
 
 unsigned int Character::getMaxEnergyPoints(void) {
   return (this->_maxEnergyPoints);
 }
 
-unsigned int Character::getAttackDamage(void) {
-  return (this->_attackDamage);
-}
+unsigned int Character::getAttackDamage(void) { return (this->_attackDamage); }

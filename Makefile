@@ -6,7 +6,7 @@
 #    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 19:10:41 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/07/08 18:07:18 by gguiulfo         ###   ########.fr        #
+#    Updated: 2017/07/08 18:22:44 by gguiulfo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,10 @@ CLASSFILES	:= Character.class Player.class Enemy.class
 FILES				:= $(addprefix classes/, $(CLASSFILES)) $(SRCFILES)
 SRC					:= $(addprefix $(SRCDIR)/, $(addsuffix .cpp, $(FILES)))
 OBJ					:= $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRC:.cpp=.o))
-HDRS				=
-LIBS				=
+CLASSHDRS		:= Character.class.hpp Player.class.hpp Enemy.class.hpp
+# INCHDRS			:=
+HDRS				:= $(addprefix src/classes/, $(CLASSHDRS))
+LIBS				:=
 
 .PHONY = all format clean fclean re
 # Rules
@@ -42,12 +44,12 @@ $(OBJDIR)%.o:$(SRCDIR)%.cpp Makefile | $(OBJDIR)
 	@mkdir -p $(dir $@)
 	@$(CXX) -c $(CXXFLAGS) $< -o $@
 
-$(NAME): $(OBJ) $(HDRS) | Makefile
+$(NAME): $(OBJ)
 	@$(CXX) $(LDFLAGS) $(LIBS) -o $@ $^
 	@printf "\r\033[38;5;340m✓ Compiled $(NAME)\033[0m\033[K\n";
 
 format: $(SRC) $(HDRS)
-	clang-format -style=Google -i $^
+	@clang-format -style=Google -i $^
 
 clean:
 	@if [ -e $(OBJDIR) ]; \
