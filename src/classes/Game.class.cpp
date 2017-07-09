@@ -88,7 +88,6 @@ void Game::run() {
   while (1) {
     screenCheck(master);
     // Enemy arbiter;
-
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(master, in_char);
     master.putSprite();
