@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MissileRain.cpp                                    :+:      :+:    :+:   */
+/*   MissileRain.class.cpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 14:54:18 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 14:59:33 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 15:15:58 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-Missile::Missile(void) : _size(0) {
-  std::cout << "Missile Default Constructor called" << std::endl;
+#include "MissileRain.class.hpp"
+
+MissileRain::MissileRain(void) : _size(0) {
+  std::cout << "MissileRain Default Constructor called" << std::endl;
 }
 
-Missile::Missile(int n, int xmax, int ymax) : _size(n) {
-  this->_missileField = new Enemy[n];
-  std::cout << "Missile Field Created" << std::endl;
+MissileRain::MissileRain(int n) : _size(n) {
+  this->_missileField = new Missile[n];
+  std::cout << "MissileRain Field Created" << std::endl;
 }
 
-Missile::Missile(Missile const & src) {
+MissileRain::MissileRain(MissileRain const & src) {
   *this = src;
 }
 
-Missile & Missile::operator=(Missile const &rhs) {
+MissileRain & MissileRain::operator=(MissileRain const &rhs) {
   (void)rhs;
   return (*this);
 }
 
-Missile::~Missile(void) {
+MissileRain::~MissileRain(void) {
   delete [] this->_missileField;
-  std::cout << "Missile Field Deleted" << std::endl;
+  std::cout << "MissileRain Field Deleted" << std::endl;
 }
 
-MissileRain *Missile::getData() const { return (_missileField); }
+Missile *MissileRain::getData() const { return (_missileField); }
 
-unsigned int Missile::getDataSize() const { return (_size); }
+unsigned int MissileRain::getDataSize() const { return (_size); }
 
-void Missile::update() {
+void MissileRain::update() {
 }

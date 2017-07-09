@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 14:11:56 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 14:34:54 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 15:15:18 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include "Enemy.class.hpp"
 
 class Missile : public Player, public Enemy {
-  Missile(void);
  public:
+  Missile(void);
   Missile(int x, int y);
   Missile(Missile const & src);
   Missile & operator=(Missile const &rhs);
