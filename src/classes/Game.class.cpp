@@ -13,7 +13,6 @@
 #include "Game.class.hpp"
 
 Game::Game() {
-  WINDOW* wnd;
   wnd = initscr();
   cbreak(); //Allows user typed characters to be immediately available
   noecho(); // does not echo any characters grabbed by getch

@@ -3,17 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
+/*   By: apineda <apineda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:25:13 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 18:10:32 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/08 18:24:31 by apineda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes/Enemy.class.hpp"
 #include "classes/Player.class.hpp"
+#include "classes/Game.class.hpp"
 
 int main(void) {
+  int init_status = init();
+
+  if(init_status == 0)
+    Game newGame;
+  else
+    return (0);
   Player master;
   Player chief(master);
   Player masterchief;

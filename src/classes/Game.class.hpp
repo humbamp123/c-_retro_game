@@ -18,6 +18,8 @@
 #include <stdlib.h>
 #include <iostream>
 
+WINDOW* wnd;
+
 class Game
 {
 public:
