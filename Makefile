@@ -6,7 +6,7 @@
 #    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 19:10:41 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/07/08 18:22:44 by gguiulfo         ###   ########.fr        #
+#    Updated: 2017/07/08 18:24:59 by gguiulfo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ $(OBJDIR)%.o:$(SRCDIR)%.cpp Makefile | $(OBJDIR)
 	@mkdir -p $(dir $@)
 	@$(CXX) -c $(CXXFLAGS) $< -o $@
 
-$(NAME): $(OBJ)
-	@$(CXX) $(LDFLAGS) $(LIBS) -o $@ $^
+$(NAME): $(OBJ) $(HDRS)
+	@$(CXX) $(LDFLAGS) $(OBJ) $(LIBS) -o $@
 	@printf "\r\033[38;5;340m✓ Compiled $(NAME)\033[0m\033[K\n";
 
 format: $(SRC) $(HDRS)
