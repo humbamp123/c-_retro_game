@@ -45,8 +45,6 @@ bool Player::getExit() { return (this->_exit_requested); }
 
 void Player::movePlayer(unsigned int in_char) {
   this->clearSprite();
-  std::cout << this->_maxX << std::endl;
-  std::cout << this->_maxY << std::endl;
   switch (in_char) {
     case 'q':
       this->_exit_requested = true;

@@ -43,18 +43,18 @@ Enemy *Asteroids::getData() const { return (_asteroidField); }
 unsigned int Asteroids::getDataSize() const { return (_size); }
 
 void Asteroids::update() {
-  // for (size_t i = 0; i < this->getDataSize(); i++) {
-  //   if (!this->_asteroidField[i].getStatus() && rand() % 2) {
-  //     this->_asteroidField[i].spawn();
-  //     this->_asteroidField[i].setStatus(true);
-  //   } else if (this->_asteroidField[i].getX() < 2) {
-  //     this->_asteroidField[i].clearSprite();
-  //     this->_asteroidField[i].setStatus(false);
-  //     if (rand() % 5) {
-  //       this->_asteroidField[i].spawn();
-  //       this->_asteroidField[i].setStatus(true);
-  //     }
-  //   } else if (this->_asteroidField[i].getStatus())
-  //     this->_asteroidField[i].moveEnemy();
-  // }
+  for (size_t i = 0; i < this->getDataSize(); i++) {
+    if (!this->_asteroidField[i].getStatus() && rand() % 2) {
+      this->_asteroidField[i].spawn();
+      this->_asteroidField[i].setStatus(true);
+    } else if (this->_asteroidField[i].getX() < 2) {
+      this->_asteroidField[i].clearSprite();
+      this->_asteroidField[i].setStatus(false);
+      if (rand() % 5) {
+        this->_asteroidField[i].spawn();
+        this->_asteroidField[i].setStatus(true);
+      }
+    } else if (this->_asteroidField[i].getStatus())
+      this->_asteroidField[i].moveEnemy();
+  }
 }
