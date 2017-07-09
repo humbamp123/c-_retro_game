@@ -19,12 +19,12 @@
 class Enemy : public Character {
  public:
   Enemy(void);
-  Enemy(unsigned int xmax, unsigned int ymax);
   Enemy(Enemy const &src);
   Enemy &operator=(Enemy const &rhs);
   ~Enemy(void);
 
   void moveEnemy();
+  void spawn();
 
 private:
   int _xDirection;
