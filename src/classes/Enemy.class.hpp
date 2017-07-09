@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 18:04:39 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 12:06:45 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:17:58 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include "Character.class.hpp"
 
-class Enemy : public Character {
+class Enemy : virtual public Character {
  public:
   Enemy(void);
   Enemy(Enemy const &src);

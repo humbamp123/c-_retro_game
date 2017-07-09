@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 14:12:25 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:15:53 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Game::Game() : xMax(0), yMax(0) {
   // wbkgd(wnd, COLOR_PAIR(1)); // sets the background color
 }
 
-Game(Game const & src) {
+Game::Game(Game const & src) {
   *this = src;
 }
 
