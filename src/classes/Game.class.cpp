@@ -83,7 +83,9 @@ void Game::run() {
   unsigned int ymax;
   getmaxyx(this->wnd, ymax, xmax);
   Player master(ymax);
-  Enemy arbiter(xmax, ymax);
+  Enemy arbiter;
+  arbiter.setXYMax(xmax, ymax);
+  arbiter.spawn();
   refresh();  // must be used after any changes have been made
 
   while (1) {
