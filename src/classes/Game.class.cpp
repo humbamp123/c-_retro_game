@@ -6,14 +6,14 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 14:15:53 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:39:18 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Game.class.hpp"
+#include "Asteroids.class.hpp"
 #include "Enemy.class.hpp"
 #include "Player.class.hpp"
-#include "Asteroids.class.hpp"
 
 Game::Game() : xMax(0), yMax(0) {
   wnd = initscr();
@@ -21,10 +21,10 @@ Game::Game() : xMax(0), yMax(0) {
   noecho();   // does not echo any characters grabbed by getch
   clear();    // clears the screen
   refresh();  // must be used after any changes have been made
-  keypad(wnd, true);   // Allows keys to be interpreted for actions
-  nodelay(wnd, true);  // This diables stoping everything when using wgetch()
-  curs_set(0);         // Makes the cursor visible or invisible
-  if (!has_colors()) {   // Macro to check if the terminal supports color
+  keypad(wnd, true);    // Allows keys to be interpreted for actions
+  nodelay(wnd, true);   // This diables stoping everything when using wgetch()
+  curs_set(0);          // Makes the cursor visible or invisible
+  if (!has_colors()) {  // Macro to check if the terminal supports color
     endwin();
     std::cout << "Error: Terminal does not support color." << std::endl;
     exit(1);
@@ -39,9 +39,7 @@ Game::Game() : xMax(0), yMax(0) {
   // wbkgd(wnd, COLOR_PAIR(1)); // sets the background color
 }
 
-Game::Game(Game const & src) {
-  *this = src;
-}
+Game::Game(Game const &src) { *this = src; }
 
 Game &Game::operator=(Game const &) { return (*this); }
 
@@ -75,41 +73,41 @@ Game::~Game() { endwin(); }
 
 void Game::screenCheck(Player &master) {
   getmaxyx(this->wnd, this->yMax, this->xMax);
-  if (master.getMaxX() != this->yMax ||
-      master.getMaxY() != this->xMax) {
+  if (master.getMaxX() != this->yMax || master.getMaxY() != this->xMax) {
     master.setXYMax(this->xMax, this->yMax);
     wclear(this->wnd);
     box(this->wnd, 0, 0);
   }
 }
 
+void Game::gameCollisions(Player &master, Asteroids &arbiters) {
+  for (size_t i = 0; i < arbiters.getDataSize(); i++) {
+    if (master.checkCollision(arbiters.getData()[i].getX(),
+                              arbiters.getData()[i].getY())) {
+      endwin();
+      exit(0);
+    }
+  }
+}
+
 void Game::run() {
   unsigned int xmax;
   unsigned int ymax;
-  int size = 1000;
-  // int tick;
+  int size = 100;
   getmaxyx(this->wnd, ymax, xmax);
   Player master(ymax);
   Asteroids arbiters(size, xmax, ymax);
   refresh();  // must be used after any changes have been made
-  // tick = 0;
   while (1) {
     screenCheck(master);
-    usleep(10000);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
-    for (size_t i = 0; i < arbiters.getDataSize(); i++) {
-        if (master.checkCollision(arbiters.getData()[i].getX(),
-                                  arbiters.getData()[i].getY())) {
-            endwin();
-            exit(0);
-        }
-    }
+    gameCollisions(master, arbiters);
     arbiters.update();
     master.putSprite();
     refresh();
     if (master.getExit() == true) break;
-    // tick++;
+    usleep(10000);
   }
 }
 

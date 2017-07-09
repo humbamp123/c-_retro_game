@@ -19,6 +19,7 @@
 #include <iostream>
 #include <string>
 #include "Player.class.hpp"
+#include "Asteroids.class.hpp"
 
 class Game {
  public:
@@ -30,6 +31,7 @@ class Game {
   WINDOW* wnd;
   void run();
   void screenCheck(Player& master);
+  void gameCollisions(Player& master, Asteroids& arbiters);
   int xMax;
   int yMax;
 };
