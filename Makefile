@@ -6,7 +6,7 @@
 #    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 19:10:41 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/07/09 11:50:24 by gguiulfo         ###   ########.fr        #
+#    Updated: 2017/07/09 12:24:59 by gguiulfo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LDFLAGS 	+= -Wall -Wextra -Werror -lncurses
 SRCDIR			:= src/
 OBJDIR			:= obj/
 SRCFILES		:= main
-CLASSFILES	:= Character.class Player.class Enemy.class Game.class
+CLASSFILES	:= Character.class Player.class Enemy.class Game.class Asteroids.class
 FILES				:= $(addprefix classes/, $(CLASSFILES)) $(SRCFILES)
 SRC					:= $(addprefix $(SRCDIR)/, $(addsuffix .cpp, $(FILES)))
 OBJ					:= $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRC:.cpp=.o))
