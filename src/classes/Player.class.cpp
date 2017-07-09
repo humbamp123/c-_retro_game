@@ -54,6 +54,7 @@ void Player::movePlayer(unsigned int in_char) {
       break;
     case ' ':
       this->_fire = true;
+      break;
     case KEY_UP:
     case 'w':
     case 'i':

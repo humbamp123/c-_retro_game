@@ -76,6 +76,7 @@ void Game::screenCheck(Player &master) {
   getmaxyx(this->wnd, this->yMax, this->xMax);
   if (master.getMaxX() != this->yMax || master.getMaxY() != this->xMax) {
     master.setXYMax(this->xMax, this->yMax);
+    // wresize(this->wnd, 50, 175); //change screen size here
     wclear(this->wnd);
     box(this->wnd, 0, 0);
   }
