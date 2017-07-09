@@ -57,6 +57,8 @@ void Enemy::spawn(void) {
   putSprite();
 }
 
+int Enemy::getBounds(void) { return( this->_bounds); }
+
 void Enemy::moveEnemy(void) {
   this->_x += this->_xDirection;
   this->_y += this->_yDirection;

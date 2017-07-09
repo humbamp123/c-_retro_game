@@ -25,10 +25,12 @@ class Enemy : public Character {
 
   void moveEnemy();
   void spawn();
+  int getBounds();
 
 private:
   int _xDirection;
   int _yDirection;
+  int _bounds;
 };
 
 #endif

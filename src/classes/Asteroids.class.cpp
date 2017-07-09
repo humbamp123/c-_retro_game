@@ -18,6 +18,9 @@ Asteroids::Asteroids(void) {
 
 Asteroids::Asteroids(int n) {
   this->_asteroidField = new Enemy[n];
+  int i = 0;
+  while (i < n)
+    Enemy(i).spawn();
   std::cout << "Asteroid Field Created" << std::endl;
 }
 
