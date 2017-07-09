@@ -44,17 +44,17 @@ unsigned int Asteroids::getDataSize() const { return (_size); }
 
 void Asteroids::update() {
   for (size_t i = 0; i < this->getDataSize(); i++) {
-    if (!this->_asteroidField[i].getStatus() && rand() % 2) {
+    if (this->_asteroidField[i].getStatus() == false && !(rand() % 100)) {
       this->_asteroidField[i].spawn();
       this->_asteroidField[i].setStatus(true);
     } else if (this->_asteroidField[i].getX() < 2) {
       this->_asteroidField[i].clearSprite();
       this->_asteroidField[i].setStatus(false);
-      if (rand() % 5) {
+      if (!(rand() % 100)) {
         this->_asteroidField[i].spawn();
         this->_asteroidField[i].setStatus(true);
       }
-    } else if (this->_asteroidField[i].getStatus())
+    } else if (this->_asteroidField[i].getStatus() == true)
       this->_asteroidField[i].moveEnemy();
   }
 }
