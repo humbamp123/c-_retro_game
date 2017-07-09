@@ -12,12 +12,14 @@
 
 #include "Character.class.hpp"
 
-Character::Character(int x, int y, unsigned int hitPoints,
+Character::Character(int x, int y, int maxX, int maxY, unsigned int hitPoints,
                      unsigned int maxHitPoints, unsigned int energyPoints,
                      unsigned int maxEnergyPoints, unsigned int attackDamage,
                      char sprite)
     : _x(x),
       _y(y),
+      _maxX(maxX),
+      _maxY(maxY),
       _hitPoints(hitPoints),
       _maxHitPoints(maxHitPoints),
       _energyPoints(energyPoints),
@@ -30,8 +32,10 @@ Character::Character(int x, int y, unsigned int hitPoints,
 }
 
 Character::Character(void)
-    : _x(21),
-      _y(42),
+    : _x(1),
+      _y(1),
+      _maxX(0),
+      _maxY(0),
       _hitPoints(90),
       _maxHitPoints(100),
       _energyPoints(40),
@@ -49,6 +53,8 @@ Character::Character(Character const &src) {
 Character &Character::operator=(Character const &rhs) {
   this->_x = rhs._x;
   this->_y = rhs._y;
+  this->_x = rhs._maxX;
+  this->_y = rhs._maxY;
   this->_hitPoints = rhs._hitPoints;
   this->_maxHitPoints = rhs._maxHitPoints;
   this->_energyPoints = rhs._energyPoints;
@@ -69,6 +75,15 @@ void Character::setX(int x) { this->_x = x; }
 int Character::getY(void) { return (this->_y); }
 
 void Character::setY(int y) { this->_y = y; }
+
+int Character::getMaxX(void) { return (this->_maxX); }
+
+int Character::getMaxY(void) { return (this->_maxY); }
+
+void Character::setXYMax(int xmax, int ymax) {
+  this->_maxX = xmax;
+  this->_maxY = ymax;
+}
 
 unsigned int Character::getHitPoints(void) { return (this->_hitPoints); }
 

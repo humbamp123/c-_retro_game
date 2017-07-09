@@ -30,8 +30,8 @@ class Game {
   WINDOW* wnd;
   void run();
   void screenCheck(Player& master);
-  unsigned int xMax;
-  unsigned int yMax;
+  int xMax;
+  int yMax;
 };
 
 #endif

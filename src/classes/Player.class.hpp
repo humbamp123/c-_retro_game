@@ -25,9 +25,6 @@ class Player : public Character {
   ~Player(void);
   void movePlayer(unsigned int in_char);
   bool getExit();
-  unsigned int getParentXMax();
-  unsigned int getParentYMax();
-  void setParentXYMax(unsigned int xmax, unsigned int ymax);
 
  private:
   bool _exit_requested;

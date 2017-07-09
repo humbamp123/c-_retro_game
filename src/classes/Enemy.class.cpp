@@ -12,8 +12,12 @@
 
 #include "Enemy.class.hpp"
 
-Enemy::Enemy(void) : Character(10, 84, 190, 200, 140, 150, 15, 'X') {
-  std::cout << "Enemy constructor Called" << std::endl;
+Enemy::Enemy(void) : Character(10, 84, 0, 0, 190, 200, 140, 150, 15, 'X') {
+
+  // std::cout << arc4random() << std::endl;
+  #ifndef FT_DEBUG
+    std::cout << "Enemy constructor Called" << std::endl;
+  #endif
 }
 
 Enemy::Enemy(Enemy const &src) : Character(src) {

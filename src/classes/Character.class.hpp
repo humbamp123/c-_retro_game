@@ -18,7 +18,7 @@
 
 class Character {
  public:
-  Character(int x, int y, unsigned int hitPoints, unsigned int maxHitPoints,
+  Character(int x, int y, int maxX, int maxY, unsigned int hitPoints, unsigned int maxHitPoints,
             unsigned int energyPoints, unsigned int maxEnergyPoints,
             unsigned int attackDamage, char sprite);
   Character(void);
@@ -30,6 +30,9 @@ class Character {
   void setX(int x);
   int getY(void);
   void setY(int y);
+  int getMaxX(void);
+  int getMaxY(void);
+  void setXYMax(int xmax, int ymax);
   unsigned int getHitPoints(void);
   unsigned int getMaxHitPoints(void);
   unsigned int getEnergyPoints(void);
@@ -42,6 +45,8 @@ class Character {
  protected:
   int _x;
   int _y;
+  int _maxX;
+  int _maxY;
   unsigned int _hitPoints;
   unsigned int _maxHitPoints;
   unsigned int _energyPoints;

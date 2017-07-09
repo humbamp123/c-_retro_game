@@ -64,16 +64,17 @@ Game::~Game() { endwin(); }
 //       draw_borders(score);
 //     }  // draw
 //     mvwprintw(field, 1, 1, "Field");
-//     mvwprintw(score, 1, 1, "Score");  // refresh each window wrefresh(field);
+//     mvwprintw(score, 1, 1, "Score");  // refresh each window 
+//     wrefresh(field);
 //     wrefresh(score);
 //   }  // ...
 // }
 
 void Game::screenCheck(Player &master) {
   getmaxyx(this->wnd, this->yMax, this->xMax);
-  if (master.getParentXMax() != this->yMax ||
-      master.getParentYMax() != this->xMax) {
-    master.setParentXYMax(this->xMax, this->yMax);
+  if (master.getMaxX() != this->yMax ||
+      master.getMaxY() != this->xMax) {
+    master.setXYMax(this->xMax, this->yMax);
     wclear(this->wnd);
     box(this->wnd, 0, 0);
   }
@@ -87,7 +88,7 @@ void Game::run() {
   refresh();  // must be used after any changes have been made
   while (1) {
     screenCheck(master);
-    // Enemy arbiter;
+    Enemy arbiter;
     usleep(30000);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
