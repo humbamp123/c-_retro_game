@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:45:42 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/08 20:53:01 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 00:38:07 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class Character {
  public:
-  Character(unsigned int x, unsigned int y, unsigned int hitPoints,
+  Character(int x, int y, unsigned int hitPoints,
             unsigned int maxHitPoints, unsigned int energyPoints,
             unsigned int maxEnergyPoints, unsigned int attackDamage,
             char sprite);
@@ -27,10 +27,10 @@ class Character {
   Character &operator=(Character const &rhs);
   ~Character(void);
 
-  unsigned int getX(void);
+  int getX(void);
   void setX(unsigned int x);
-  unsigned int getY(void);
-  void setY(unsigned int y);
+  int getY(void);
+  void setY(int y);
   unsigned int getHitPoints(void);
   unsigned int getMaxHitPoints(void);
   unsigned int getEnergyPoints(void);
@@ -40,8 +40,8 @@ class Character {
   void clearSprite(void);
   void putSprite(void);
  protected:
-  unsigned int _x;
-  unsigned int _y;
+  int _x;
+  int _y;
   unsigned int _hitPoints;
   unsigned int _maxHitPoints;
   unsigned int _energyPoints;
