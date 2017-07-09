@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:50:22 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/08 21:05:32 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 11:10:06 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 
 class Game {
  public:
-  Game();
-  Game(std::string name);
+  Game(void);
+  Game(Game const & src);
   Game& operator=(Game const&);
-  ~Game();
+  ~Game(void);
 
   WINDOW* wnd;
   void run();

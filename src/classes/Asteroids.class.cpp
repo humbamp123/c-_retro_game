@@ -1,19 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Asteroids.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/08 17:25:13 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 11:58:32 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/07/09 12:14:51 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/07/09 12:14:55 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "classes/Game.class.hpp"
-
-int main(void) {
-  Game newGame;
-  newGame.run();
-  return (0);
-}
