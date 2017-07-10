@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 21:37:29 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:20:00 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,28 @@
 #include "MissileRain.class.hpp"
 #include "Player.class.hpp"
 #include "Space.class.hpp"
+
+// #include <ncurses.h> #include <unistd.h> int main(int argc, char *argv[]) {
+//   int parent_x, parent_y;
+//   int score_size = 3;
+//   initscr();
+//   noecho();
+//   curs_set(FALSE);   // get our maximum window dimensions
+//   getmaxyx(stdscr,parent_y, parent_x); // set up initial windows
+//   WINDOW *field =
+// newwin(parent_y - score_size, parent_x, 0, 0);
+// WINDOW *score =
+//     newwin(score_size, parent_x, parent_y - score_size, 0);  // draw to our
+// windows mvwprintw(field, 0, 0, "Field");
+// mvwprintw(score, 0, 0, "Score");  //
+// refresh each window wrefresh(field);
+// wrefresh(score);
+// sleep(5);  // clean up
+// delwin(field);
+// delwin(score);
+// endwin();
+// return 0;
+// }
 
 Game::Game() : _xMax(0), _yMax(0) {
   this->wnd = initscr();
@@ -33,6 +55,9 @@ Game::Game() : _xMax(0), _yMax(0) {
     std::cout << "Error: Terminal does not support color." << std::endl;
     exit(1);
   }
+  // start_color(); // Allows color changes
+  // init_pair(1, COLOR_BLACK, COLOR_CYAN); // Takes two colors into a number
+  // wbkgd(wnd, COLOR_PAIR(1)); // sets the background color
 }
 
 Game::Game(Game const &src) { *this = src; }
@@ -41,21 +66,48 @@ Game &Game::operator=(Game const &) { return (*this); }
 
 Game::~Game() { endwin(); }
 
+// int main(int argc, char *argv[]) {
+//   int parent_x, parent_y, new_x, new_y;
+//   int score_size = 3;  // ...
+//   draw_borders(field);
+//   draw_borders(score);
+//   while (1) {
+//     getmaxyx(stdscr, new_y, new_x);
+//     if (new_y != parent_y || new_x != parent_x) {
+//       parent_x = new_x;
+//       parent_y = new_y;
+//       wresize(field, new_y - score_size, new_x);
+//       wresize(score, score_size, new_x);
+//       mvwin(score, new_y - score_size, 0);
+//       wclear(stdscr);
+//       wclear(field);
+//       wclear(score);
+//       draw_borders(field);
+//       draw_borders(score);
+//     }  // draw
+//     mvwprintw(field, 1, 1, "Field");
+//     mvwprintw(score, 1, 1, "Score");  // refresh each window
+//     wrefresh(field);
+//     wrefresh(score);
+//   }  // ...
+// }
 
-void Game::screenCheck(Player &master, Asteroids &arbiters) {
+void Game::screenCheck(Player &master) {
   getmaxyx(this->wnd, this->_yMax, this->_xMax);
   if (master.getMaxX() != this->_yMax || master.getMaxY() != this->_xMax) {
     master.setXYMax(this->_xMax, this->_yMax - _scoreSize + 1);
-    for (size_t i = 0; i < arbiters.getDataSize(); i++) {
-      arbiters.getData()[i].setXYMax(this->_xMax, this->_yMax);
-    }
+    // wresize(this->wnd, 50, 175); //change screen size here
     wclear(this->wnd);
-    wattron(this->wnd, A_BOLD);
+    // wclear(this->text);
+    wattron(this->wnd, A_BOLD);   // Activates an atribute for the drawing, Bold in this case
     box(this->wnd, 0, 0);
-    wattroff(this->wnd, A_BOLD);
+    wattroff(this->wnd, A_BOLD);  // Deactivates an atribute for the drawing, Bold in this
+                      // case
     wmove(this->wnd, this->_yMax - _scoreSize, 1);
     whline(this->wnd, '-', this->_xMax - 2);
     whline(this->wnd, '-', this->_xMax - 2);
+
+    // wrefresh(this->text);
   }
   if (this->_score != this->_maxScore) {
     this->_maxScore = this->_score;
@@ -69,10 +121,6 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
   for (size_t i = 0; i < arbiters.getDataSize(); i++) {
     if (arbiters.getData()[i].getStatus()) {
       if (master.checkCollision(arbiters.getData()[i].getX(),
-          arbiters.getData()[i].getY())
-        || master.checkCollision(arbiters.getData()[i].getX() - 1,
-          arbiters.getData()[i].getY())
-        || master.checkCollision(arbiters.getData()[i].getX() + 1,
           arbiters.getData()[i].getY())) {
         endwin();
         return (1);
@@ -87,10 +135,6 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
             arbiters.getData()[i].clearSprite();
             arbiters.getData()[i].setStatus(false);
             this->_score += 1;
-            if (this->_maxScore > 10)
-              arbiters.getData()[i].setLevel(2);
-            else if (this->_maxScore > 500)
-              arbiters.getData()[i].setLevel(3);
           }
           else if (bullets.getData()[j].isFired() && bullets.getData()[j].getX() + 1 > this->_xMax - 2) {
             bullets.getData()[j].clearSprite();
@@ -132,6 +176,7 @@ void Game::fireMissiles(Player &master, Asteroids &arbiters,
     }
     master.noFire();
   }
+  // if (!(rand() % 100)) {
     for (size_t i = 0; i < arbiters.getDataSize(); i++) {
       if (arbiters.getData()[i].getStatus()) {
         for (size_t j = 0; j < lasers.getDataSize(); j++) {
@@ -139,10 +184,13 @@ void Game::fireMissiles(Player &master, Asteroids &arbiters,
             lasers.getData()[j].setIsFired(true);
             lasers.getData()[j].setY(arbiters.getData()[i].getY());
             lasers.getData()[j].setX(arbiters.getData()[i].getX() - 1);
+
+            // break;
           }
         }
       }
     }
+  // }
   for (size_t i = 0; i < bullets.getDataSize(); i++) {
     bullets.getData()[i].update();
     lasers.getData()[i].update();
@@ -162,7 +210,7 @@ void Game::run() {
   Space stars(50, xmax, ymax);
   refresh();  // must be used after any changes have been made
   while (1) {
-    screenCheck(master, arbiters);
+    screenCheck(master);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
     if (master.getExit() == true) break;
@@ -172,10 +220,11 @@ void Game::run() {
     }
     stars.update();
     arbiters.update();
-    master.putSpriteString();
+    master.putSprite();
     refresh();
     usleep(30000);
   }
+  // delwin(text);
   delwin(wnd);
   endwin();
 }
