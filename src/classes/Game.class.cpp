@@ -92,11 +92,22 @@ Game::~Game() { endwin(); }
 //   }  // ...
 // }
 
+<<<<<<< HEAD
 void Game::screenCheck(Player &master) {
   getmaxyx(this->wnd, this->_yMax, this->_xMax);
   if (master.getMaxX() != this->_yMax || master.getMaxY() != this->_xMax) {
     master.setXYMax(this->_xMax, this->_yMax - _scoreSize + 1);
     // wresize(this->wnd, 50, 175); //change screen size here
+=======
+void Game::screenCheck(Player &master, Asteroids &arbiters, Space &stars) {
+  getmaxyx(this->wnd, this->_yMax, this->_xMax);
+  if (master.getMaxX() != this->_yMax || master.getMaxY() != this->_xMax) {
+    master.setXYMax(this->_xMax, this->_yMax - _scoreSize + 1);
+    for (size_t i = 0; i < arbiters.getDataSize(); i++) {
+      arbiters.getData()[i].setXYMax(this->_xMax, this->_yMax);
+      stars.getData()[i].setXYMax(this->_xMax, this->_yMax);
+    }
+>>>>>>> bbf2b39269ddd11f75dfa44c02127d7a908ea4be
     wclear(this->wnd);
     // wclear(this->text);
     wattron(this->wnd, A_BOLD);   // Activates an atribute for the drawing, Bold in this case
@@ -207,10 +218,14 @@ void Game::run() {
   Asteroids arbiters(enemyAmount, xmax, ymax);
   MissileRain bullets(bulletAmount, 1);
   MissileRain lasers(bulletAmount, -2);
-  Space stars(50, xmax, ymax);
+  Space stars(100, xmax, ymax);
   refresh();  // must be used after any changes have been made
   while (1) {
+<<<<<<< HEAD
     screenCheck(master);
+=======
+    screenCheck(master, arbiters, stars);
+>>>>>>> bbf2b39269ddd11f75dfa44c02127d7a908ea4be
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
     if (master.getExit() == true) break;
