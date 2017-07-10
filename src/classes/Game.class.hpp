@@ -31,7 +31,7 @@ class Game {
 
   WINDOW* wnd;
   void run();
-  void screenCheck(Player& master);
+  void screenCheck(Player& master, Asteroids &arbiters);
 
  private:
   int _xMax;

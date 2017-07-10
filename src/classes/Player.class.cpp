@@ -61,12 +61,12 @@ void Player::movePlayer(unsigned int in_char) {
     case KEY_UP:
     case 'w':
     case 'i':
-      if (this->getY() > 0 + 2) this->setY(this->getY() - 1);
+      if (this->getY() > 0 + 1) this->setY(this->getY() - 1);
       break;
     case KEY_DOWN:
     case 's':
     case 'k':
-      if (this->getY() < (int)this->_maxY - 3) this->setY(this->getY() + 1);
+      if (this->getY() < (int)this->_maxY - 2) this->setY(this->getY() + 1);
       break;
     case KEY_LEFT:
     case 'a':

@@ -91,10 +91,13 @@ Game::~Game() { endwin(); }
 //   }  // ...
 // }
 
-void Game::screenCheck(Player &master) {
+void Game::screenCheck(Player &master, Asteroids &arbiters) {
   getmaxyx(this->wnd, this->_yMax, this->_xMax);
   if (master.getMaxX() != this->_yMax || master.getMaxY() != this->_xMax) {
     master.setXYMax(this->_xMax, this->_yMax - _scoreSize + 1);
+    for (size_t i = 0; i < arbiters.getDataSize(); i++) {
+      arbiters.getData()[i].setXYMax(this->_xMax, this->_yMax);
+    }
     // wresize(this->wnd, 50, 175); //change screen size here
     wclear(this->wnd);
     // wclear(this->text);
@@ -120,6 +123,10 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
   for (size_t i = 0; i < arbiters.getDataSize(); i++) {
     if (arbiters.getData()[i].getStatus()) {
       if (master.checkCollision(arbiters.getData()[i].getX(),
+          arbiters.getData()[i].getY())
+        || master.checkCollision(arbiters.getData()[i].getX() - 1,
+          arbiters.getData()[i].getY())
+        || master.checkCollision(arbiters.getData()[i].getX() + 1,
           arbiters.getData()[i].getY())) {
         endwin();
         return (1);
@@ -127,8 +134,6 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
         for (size_t j = 0; j < bullets.getDataSize(); j++) {
           if (bullets.getData()[j].isFired() &&
 (bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
-|| bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 2, arbiters.getData()[i].getY())
-|| bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 2, arbiters.getData()[i].getY())
 || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
 || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
             bullets.getData()[j].clearSprite();
@@ -136,6 +141,10 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
             arbiters.getData()[i].clearSprite();
             arbiters.getData()[i].setStatus(false);
             this->_score += 1;
+            if (this->_maxScore == 10)
+              arbiters.getData()[i].setLevel();
+            else if (this->_maxScore == 500)
+              arbiters.getData()[i].setLevel();
           }
           else if (bullets.getData()[j].isFired() && bullets.getData()[j].getX() + 1 > this->_xMax - 2) {
             bullets.getData()[j].clearSprite();
@@ -177,7 +186,6 @@ void Game::fireMissiles(Player &master, Asteroids &arbiters,
     }
     master.noFire();
   }
-  // if (!(rand() % 100)) {
     for (size_t i = 0; i < arbiters.getDataSize(); i++) {
       if (arbiters.getData()[i].getStatus()) {
         for (size_t j = 0; j < lasers.getDataSize(); j++) {
@@ -185,13 +193,10 @@ void Game::fireMissiles(Player &master, Asteroids &arbiters,
             lasers.getData()[j].setIsFired(true);
             lasers.getData()[j].setY(arbiters.getData()[i].getY());
             lasers.getData()[j].setX(arbiters.getData()[i].getX() - 1);
-
-            // break;
           }
         }
       }
     }
-  // }
   for (size_t i = 0; i < bullets.getDataSize(); i++) {
     bullets.getData()[i].update();
     lasers.getData()[i].update();
@@ -210,7 +215,7 @@ void Game::run() {
   MissileRain lasers(bulletAmount, -2);
   refresh();  // must be used after any changes have been made
   while (1) {
-    screenCheck(master);
+    screenCheck(master, arbiters);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
     if (master.getExit() == true) break;
@@ -223,7 +228,6 @@ void Game::run() {
     refresh();
     usleep(30000);
   }
-  // delwin(text);
   delwin(wnd);
   endwin();
 }
