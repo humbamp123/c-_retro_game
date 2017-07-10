@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apineda <apineda@student.42.fr>            +#+  +:+       +#+         #
+#    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 19:10:41 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/07/09 20:41:44 by apineda          ###   ########.fr        #
+#    Updated: 2017/07/09 21:37:50 by gguiulfo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCDIR			:= src/
 OBJDIR			:= obj/
 SRCFILES		:= main
 CLASSFILES	:= Character.class Player.class Enemy.class Game.class \
-							 Asteroids.class Missile.class MissileRain.class
+							 Asteroids.class Missile.class MissileRain.class Star.class \
+							 Space.class
 FILES				:= $(addprefix classes/, $(CLASSFILES)) $(SRCFILES)
 SRC					:= $(addprefix $(SRCDIR)/, $(addsuffix .cpp, $(FILES)))
 OBJ					:= $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRC:.cpp=.o))

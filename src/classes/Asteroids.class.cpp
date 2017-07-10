@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 12:14:51 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 15:02:39 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 21:35:57 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,6 @@ Asteroids::Asteroids(int n, int xmax, int ymax) : _size(n) {
   this->_asteroidField = new Enemy[n];
   for (int i = 0; i < n; i++) {
     this->_asteroidField[i].setXYMax(xmax, ymax);
-  }
-  // std::cout << "Asteroid Field Created" << std::endl;
-}
-
-Asteroids::Asteroids(int xmax, int ymax) {
-  int n = 50;
-  this->_asteroidField = new Enemy[n];
-  for (int i = 0; i < n; i++) {
-    this->_asteroidField[i].setXYMax(xmax, ymax);
-    this->_asteroidField[i].setSprite('.');
   }
   // std::cout << "Asteroid Field Created" << std::endl;
 }
