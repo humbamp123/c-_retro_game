@@ -42,12 +42,13 @@ Game &Game::operator=(Game const &) { return (*this); }
 Game::~Game() { endwin(); }
 
 
-void Game::screenCheck(Player &master, Asteroids &arbiters) {
+void Game::screenCheck(Player &master, Asteroids &arbiters, Space &stars) {
   getmaxyx(this->wnd, this->_yMax, this->_xMax);
   if (master.getMaxX() != this->_yMax || master.getMaxY() != this->_xMax) {
     master.setXYMax(this->_xMax, this->_yMax - _scoreSize + 1);
     for (size_t i = 0; i < arbiters.getDataSize(); i++) {
       arbiters.getData()[i].setXYMax(this->_xMax, this->_yMax);
+      stars.getData()[i].setXYMax(this->_xMax, this->_yMax);
     }
     wclear(this->wnd);
     wattron(this->wnd, A_BOLD);
@@ -159,10 +160,10 @@ void Game::run() {
   Asteroids arbiters(enemyAmount, xmax, ymax);
   MissileRain bullets(bulletAmount, 1);
   MissileRain lasers(bulletAmount, -2);
-  Space stars(50, xmax, ymax);
+  Space stars(100, xmax, ymax);
   refresh();  // must be used after any changes have been made
   while (1) {
-    screenCheck(master, arbiters);
+    screenCheck(master, arbiters, stars);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
     if (master.getExit() == true) break;

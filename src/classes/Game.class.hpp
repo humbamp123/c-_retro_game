@@ -21,6 +21,7 @@
 #include "Asteroids.class.hpp"
 #include "MissileRain.class.hpp"
 #include "Player.class.hpp"
+#include "Space.class.hpp"
 
 class Game {
  public:
@@ -31,7 +32,7 @@ class Game {
 
   WINDOW* wnd;
   void run();
-  void screenCheck(Player& master, Asteroids &arbiters);
+  void screenCheck(Player& master, Asteroids &arbiters, Space &stars);
 
  private:
   int _xMax;
