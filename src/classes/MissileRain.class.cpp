@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 14:54:18 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 22:31:29 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:47:10 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ MissileRain &MissileRain::operator=(MissileRain const &rhs) {
   return (*this);
 }
 
-MissileRain::~MissileRain(void) {
-  delete[] this->_missileField;
-  std::cout << "MissileRain Field Deleted" << std::endl;
-}
+MissileRain::~MissileRain(void) { delete[] this->_missileField; }
 
 Missile *MissileRain::getData() const { return (_missileField); }
 

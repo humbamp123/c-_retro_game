@@ -6,22 +6,19 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 21:25:28 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 21:42:49 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:46:09 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Space.class.hpp"
 
-Space::Space(void) : _size(0) {
-  std::cout << "Asteroid Default Constructor called" << std::endl;
-}
+Space::Space(void) : _size(0) {}
 
 Space::Space(int n, int xmax, int ymax) : _size(n) {
   this->_starField = new Star[n];
   for (int i = 0; i < n; i++) {
     this->_starField[i].setXYMax(xmax, ymax);
   }
-  // std::cout << "Asteroid Field Created" << std::endl;
 }
 
 Space::Space(Space const &src) { *this = src; }
@@ -31,10 +28,7 @@ Space &Space::operator=(Space const &rhs) {
   return (*this);
 }
 
-Space::~Space(void) {
-  delete[] this->_starField;
-  std::cout << "Asteroid Field Deleted" << std::endl;
-}
+Space::~Space(void) { delete[] this->_starField; }
 
 Star *Space::getData() const { return (_starField); }
 
