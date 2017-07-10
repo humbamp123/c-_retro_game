@@ -14,7 +14,7 @@
 
 Missile::Missile(void) : Character(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '-'),
                 Player(0) {
-  std::cout << "Default constructor called" << std::endl;
+  // std::cout << "Default constructor called" << std::endl;
 }
 
 Missile::Missile(int x, int y) : Character(x, y, 0, 0, 0, 0, 0, 0, 0, 1, '-'),

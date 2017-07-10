@@ -16,14 +16,36 @@
 #include "Player.class.hpp"
 #include "MissileRain.class.hpp"
 
-Game::Game() : xMax(0), yMax(0) {
-  wnd = initscr();
+// #include <ncurses.h> #include <unistd.h> int main(int argc, char *argv[]) {
+//   int parent_x, parent_y;
+//   int score_size = 3;
+//   initscr();
+//   noecho();
+//   curs_set(FALSE);   // get our maximum window dimensions 
+//   getmaxyx(stdscr,parent_y, parent_x); // set up initial windows 
+//   WINDOW *field =
+// newwin(parent_y - score_size, parent_x, 0, 0);
+// WINDOW *score =
+//     newwin(score_size, parent_x, parent_y - score_size, 0);  // draw to our
+// windows mvwprintw(field, 0, 0, "Field");
+// mvwprintw(score, 0, 0, "Score");  //
+// refresh each window wrefresh(field);
+// wrefresh(score);
+// sleep(5);  // clean up
+// delwin(field);
+// delwin(score);
+// endwin();
+// return 0;
+// }
+
+Game::Game() : _xMax(0), _yMax(0) {
+  this->wnd = initscr();
+  this->_scoreSize = 3;
   cbreak();   // Allows user typed characters to be immediately available
   noecho();   // does not echo any characters grabbed by getch
-  clear();    // clears the screen
   refresh();  // must be used after any changes have been made
-  keypad(wnd, true);    // Allows keys to be interpreted for actions
-  nodelay(wnd, true);   // This diables stoping everything when using wgetch()
+  keypad(this->wnd, true);    // Allows keys to be interpreted for actions
+  nodelay(this->wnd, true);   // This diables stoping everything when using wgetch()
   curs_set(0);          // Makes the cursor visible or invisible
   if (!has_colors()) {  // Macro to check if the terminal supports color
     endwin();
@@ -31,11 +53,6 @@ Game::Game() : xMax(0), yMax(0) {
     exit(1);
   }
   // start_color(); // Allows color changes
-
-  attron(A_BOLD);   // Activates an atribute for the drawing, Bold in this case
-  box(wnd, 0, 0);   // One way to draw a border
-  attroff(A_BOLD);  // Deactivates an atribute for the drawing, Bold in this
-                    // case
   // init_pair(1, COLOR_BLACK, COLOR_CYAN); // Takes two colors into a number
   // wbkgd(wnd, COLOR_PAIR(1)); // sets the background color
 }
@@ -73,12 +90,24 @@ Game::~Game() { endwin(); }
 // }
 
 void Game::screenCheck(Player &master) {
-  getmaxyx(this->wnd, this->yMax, this->xMax);
-  if (master.getMaxX() != this->yMax || master.getMaxY() != this->xMax) {
-    master.setXYMax(this->xMax, this->yMax);
+  getmaxyx(this->wnd, this->_yMax, this->_xMax);
+  if (master.getMaxX() != this->_yMax || master.getMaxY() != this->_xMax) {
+    master.setXYMax(this->_xMax, this->_yMax - _scoreSize + 1);
     // wresize(this->wnd, 50, 175); //change screen size here
     wclear(this->wnd);
+    // wclear(this->text);
+    wattron(this->wnd, A_BOLD);   // Activates an atribute for the drawing, Bold in this case
     box(this->wnd, 0, 0);
+    wattroff(this->wnd, A_BOLD);  // Deactivates an atribute for the drawing, Bold in this
+                      // case
+    wmove(this->wnd, this->_yMax - _scoreSize, 1);
+    whline(this->wnd, '-', this->_xMax - 2);
+    whline(this->wnd, '-', this->_xMax - 2);
+    wrefresh(this->wnd);
+    // wrefresh(this->text);
+  } else if (this->_score != this->_maxScore) {
+    this->_maxScore = this->_score;
+
   }
 }
 
@@ -127,6 +156,9 @@ void Game::run() {
     if (master.getExit() == true) break;
     usleep(30000);
   }
+  delwin(text);
+  delwin(wnd);
+  endwin();
 }
 
 // move(5, 5); //moves the cursor to the specified y, x, position

@@ -36,13 +36,13 @@ Enemy::~Enemy(void) { std::cout << "Enemy destructor Called" << std::endl; }
 
 void Enemy::spawn(void) {
   if (this->_level == 1) {
-    this->_x = this->_maxX - 2;
-    this->_y = (arc4random() % (this->_maxY - 2)) + 1;
+    this->_x = this->_maxX - 3 + arc4random() % 2;
+    this->_y = (arc4random() % (this->_maxY - 4)) + 1;
     this->_xDirection = -1;
     this->_yDirection = 0;
   } else if (this->_level == 2) {
     this->_x = 1;
-    this->_y = (arc4random() % (this->_maxY - 2)) + 1;
+    this->_y = (arc4random() % (this->_maxY - 4)) + 1;
     this->_xDirection = 1;
     this->_yDirection = 0;
   } else if (this->_level == 3) {
