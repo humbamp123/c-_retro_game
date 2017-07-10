@@ -21,14 +21,11 @@ Player::Player(unsigned int max_y)
   this->_x = 2;
   this->_y = max_y / 2;
   this->_fire = false;
-<<<<<<< HEAD
   putSpriteString(1, 6);
 #ifdef FT_DEBUG
   std::cout << "Player constructor Called" << std::endl;
 #endif
-=======
-  putSpriteString(6);
->>>>>>> 43792cc390a02b964537e5d6fcfb354117972fe4
+
 }
 
 Player::Player(Player const &src) : Character(src) {}
