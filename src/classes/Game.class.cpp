@@ -41,6 +41,8 @@
 Game::Game() : _xMax(0), _yMax(0) {
   this->wnd = initscr();
   this->_scoreSize = 3;
+  this->_score = 0;
+  this->_maxScore = -1;
   cbreak();   // Allows user typed characters to be immediately available
   noecho();   // does not echo any characters grabbed by getch
   refresh();  // must be used after any changes have been made
@@ -103,12 +105,14 @@ void Game::screenCheck(Player &master) {
     wmove(this->wnd, this->_yMax - _scoreSize, 1);
     whline(this->wnd, '-', this->_xMax - 2);
     whline(this->wnd, '-', this->_xMax - 2);
-    wrefresh(this->wnd);
+    
     // wrefresh(this->text);
-  } else if (this->_score != this->_maxScore) {
-    this->_maxScore = this->_score;
-
   }
+  if (this->_score != this->_maxScore) {
+    this->_maxScore = this->_score;
+  }
+  mvwprintw(this->wnd, this->_yMax - 2, 1, "Score : %d", this->_maxScore);
+  wrefresh(this->wnd);
 }
 
 bool Game::gameCollisions(Player &master, Asteroids &arbiters,
@@ -208,7 +212,7 @@ void Game::run() {
       break;
     }
     arbiters.update();
-    master.putSprite(8);
+    master.putSprite();
     refresh();
     usleep(30000);
   }
