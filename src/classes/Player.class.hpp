@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:35:27 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 14:37:15 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 17:20:25 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Player : virtual public Character {
   bool getExit();
   bool checkCollision(int x, int y);
   bool getFire();
+  void noFire();
  private:
   bool _exit_requested;
   bool _fire;

@@ -21,9 +21,9 @@ Enemy::Enemy(void) : Character(10, 84, 0, 0, 1, 190, 200, 140, 150, 15, 'X') {
 }
 
 Enemy::Enemy(Enemy const &src) : Character(src) {
-  #ifdef FT_DEBUG
-    std::cout << "Enemy copy constructor called" << std::endl;
-  #endif
+#ifdef FT_DEBUG
+  std::cout << "Enemy copy constructor called" << std::endl;
+#endif
 }
 
 Enemy &Enemy::operator=(Enemy const &rhs) {
@@ -59,13 +59,11 @@ void Enemy::spawn(void) {
   putSprite();
 }
 
-void Enemy::setStatus(bool status) {
-  this->_status = status;
-}
+void Enemy::setStatus(bool status) { this->_status = status; }
 
-bool Enemy::getStatus(void) { return(this->_status); }
+bool Enemy::getStatus(void) { return (this->_status); }
 
-int Enemy::getBounds(void) { return( this->_bounds); }
+int Enemy::getBounds(void) { return (this->_bounds); }
 
 void Enemy::moveEnemy(void) {
   clearSprite();

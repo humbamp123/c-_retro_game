@@ -18,23 +18,21 @@ Asteroids::Asteroids(void) : _size(0) {
 
 Asteroids::Asteroids(int n, int xmax, int ymax) : _size(n) {
   this->_asteroidField = new Enemy[n];
-  for (int i = 0; i < n; i++){
+  for (int i = 0; i < n; i++) {
     this->_asteroidField[i].setXYMax(xmax, ymax);
   }
   std::cout << "Asteroid Field Created" << std::endl;
 }
 
-Asteroids::Asteroids(Asteroids const & src) {
-  *this = src;
-}
+Asteroids::Asteroids(Asteroids const &src) { *this = src; }
 
-Asteroids & Asteroids::operator=(Asteroids const &rhs) {
+Asteroids &Asteroids::operator=(Asteroids const &rhs) {
   (void)rhs;
   return (*this);
 }
 
 Asteroids::~Asteroids(void) {
-  delete [] this->_asteroidField;
+  delete[] this->_asteroidField;
   std::cout << "Asteroid Field Deleted" << std::endl;
 }
 

@@ -29,7 +29,7 @@ class Enemy : virtual public Character {
   void setStatus(bool status);
   bool getStatus();
 
-private:
+ private:
   int _xDirection;
   int _yDirection;
   int _bounds;

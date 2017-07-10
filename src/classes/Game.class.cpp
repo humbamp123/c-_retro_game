@@ -6,15 +6,15 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 14:40:27 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 18:27:25 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Game.class.hpp"
 #include "Asteroids.class.hpp"
 #include "Enemy.class.hpp"
-#include "Player.class.hpp"
 #include "MissileRain.class.hpp"
+#include "Player.class.hpp"
 
 Game::Game() : xMax(0), yMax(0) {
   wnd = initscr();
@@ -82,23 +82,51 @@ void Game::screenCheck(Player &master) {
   }
 }
 
-bool Game::gameCollisions(Player &master, Asteroids &arbiters, MissileRain &bullets) {
+bool Game::gameCollisions(Player &master, Asteroids &arbiters,
+                          MissileRain &bullets) {
   for (size_t i = 0; i < arbiters.getDataSize(); i++) {
-    if (master.checkCollision(arbiters.getData()[i].getX(),
-                              arbiters.getData()[i].getY())) {
-      endwin();
-      return (1);
-    } else {
-      for (size_t i = 0; i < bullets.getDataSize(); i++) {
-        if (bullets.getData()[i].checkCollision(arbiters.getData()[i].getX(),
-                                     arbiters.getData()[i].getY())){
-          bullets.getData()[i].clearSprite();
-          arbiters.getData()[i].clearSprite();
+    if (arbiters.getData()[i].getStatus()) {
+      if (master.checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())) {
+        endwin();
+        return (1);
+      } else {
+        for (size_t j = 0; j < bullets.getDataSize(); j++) {
+          if (bullets.getData()[j].isFired()
+          && (bullets.getData()[j].getX() + 1 > this->xMax
+          || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
+          || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
+          || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
+            bullets.getData()[j].clearSprite();
+            bullets.getData()[j].setIsFired(false);
+            arbiters.getData()[i].clearSprite();
+            arbiters.getData()[i].setStatus(false);
+          }
         }
       }
     }
   }
   return (0);
+}
+
+void Game::fireMissiles(Player &master, Asteroids &arbiters,
+                          MissileRain &bullets) {
+  if (master.getFire()) {
+    for (size_t i = 0; i < bullets.getDataSize(); i++) {
+      if (bullets.getData()[i].isFired() == false) {
+        bullets.getData()[i].setIsFired(true);
+        bullets.getData()[i].setY(master.getY());
+        bullets.getData()[i].setX(master.getX() + 1);
+        break;
+      }
+    }
+    master.noFire();
+  }
+  // TODO : Enemy missiles
+
+  for (size_t i = 0; i < bullets.getDataSize(); i++) {
+    bullets.getData()[i].update();
+  }
+  (void)arbiters;
 }
 
 void Game::run() {
@@ -115,14 +143,12 @@ void Game::run() {
     screenCheck(master);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
-    if (master.getFire()) {
-      
-    }
+    master.putSprite();
+    fireMissiles(master, arbiters, bullets);
     if (gameCollisions(master, arbiters, bullets)) {
       break;
     }
     arbiters.update();
-    master.putSprite();
     refresh();
     if (master.getExit() == true) break;
     usleep(30000);
