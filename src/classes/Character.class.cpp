@@ -88,6 +88,8 @@ void Character::setXYMax(int xmax, int ymax) {
   this->_maxY = ymax;
 }
 
+void Character::setSprite(int sprite) { this->_sprite = sprite; }
+
 unsigned int Character::getHitPoints(void) { return (this->_hitPoints); }
 
 unsigned int Character::getMaxHitPoints(void) { return (this->_maxHitPoints); }
@@ -105,3 +107,14 @@ char Character::getSprite(void) { return (this->_sprite); }
 void Character::clearSprite(void) { mvaddch(this->_y, this->_x, ' '); }
 
 void Character::putSprite(void) { mvaddch(this->_y, this->_x, this->_sprite); }
+
+void Character::putSprite(int color) {
+  start_color();
+  init_pair(1, color, COLOR_BLACK);
+
+  attron(COLOR_PAIR(1));
+  mvaddch(this->_y, this->_x, this->_sprite);
+  attroff(COLOR_PAIR(1));
+}
+
+
