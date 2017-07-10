@@ -117,9 +117,9 @@ void Character::putSpriteString(void) {
 }
 
 
-void Character::putSpriteString(int color) {
+void Character::putSpriteString(int initcolor, int color) {
   start_color();
-  init_pair(1, color, COLOR_BLACK);
+  init_pair(initcolor, color, COLOR_BLACK);
 
   attron(COLOR_PAIR(1));
   for (size_t i = 0; i < this->_spriteString.length(); i++) {
@@ -132,9 +132,9 @@ void Character::setLevel(int level) { this->_level = level; }
 
 void Character::putSprite(void) { mvaddch(this->_y, this->_x, this->_sprite); }
 
-void Character::putSprite(int color) {
+void Character::putSprite(int initcolor, int color) {
   start_color();
-  init_pair(1, color, COLOR_BLACK);
+  init_pair(initcolor, color, COLOR_BLACK);
 
   attron(COLOR_PAIR(1));
   mvaddch(this->_y, this->_x, this->_sprite);
