@@ -127,6 +127,8 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
         for (size_t j = 0; j < bullets.getDataSize(); j++) {
           if (bullets.getData()[j].isFired() &&
 (bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
+|| bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 2, arbiters.getData()[i].getY())
+|| bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 2, arbiters.getData()[i].getY())
 || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
 || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
             bullets.getData()[j].clearSprite();
@@ -217,7 +219,7 @@ void Game::run() {
       break;
     }
     arbiters.update();
-    master.putSprite();
+    master.putSpriteString();
     refresh();
     usleep(30000);
   }

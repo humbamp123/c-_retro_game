@@ -13,7 +13,7 @@
 #include "Enemy.class.hpp"
 #include <unistd.h>
 
-Enemy::Enemy(void) : Character(10, 84, 0, 0, 1, 190, 200, 140, 150, 15, 'X') {
+Enemy::Enemy(void) : Character(10, 84, 0, 0, 1, 190, 200, 140, 150, 15, 'X', "X") {
   this->_status = false;
 #ifdef FT_DEBUG
   std::cout << "Enemy constructor Called" << std::endl;

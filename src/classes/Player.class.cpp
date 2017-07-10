@@ -12,16 +12,16 @@
 
 #include "Player.class.hpp"
 
-Player::Player(void) : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, 'O') {
+Player::Player(void) : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, '0', "<0>") {
 #ifdef FT_DEBUG
   std::cout << "Player constructor Called" << std::endl;
 #endif
 }
 
 Player::Player(unsigned int max_y)
-    : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, 'O') {
+    : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, 'O', "<0>") {
   this->_exit_requested = false;
-  this->_x = 1;
+  this->_x = 2;
   this->_y = max_y / 2;
   this->_fire = false;
   putSprite();
@@ -61,22 +61,22 @@ void Player::movePlayer(unsigned int in_char) {
     case KEY_UP:
     case 'w':
     case 'i':
-      if (this->getY() > 0 + 1) this->setY(this->getY() - 1);
+      if (this->getY() > 0 + 2) this->setY(this->getY() - 1);
       break;
     case KEY_DOWN:
     case 's':
     case 'k':
-      if (this->getY() < (int)this->_maxY - 2) this->setY(this->getY() + 1);
+      if (this->getY() < (int)this->_maxY - 3) this->setY(this->getY() + 1);
       break;
     case KEY_LEFT:
     case 'a':
     case 'j':
-      if (this->getX() > 1) this->setX(this->getX() - 1);
+      if (this->getX() > 2) this->setX(this->getX() - 1);
       break;
     case KEY_RIGHT:
     case 'd':
     case 'l':
-      if (this->getX() < (int)this->_maxX - 4) this->setX(this->getX() + 1);
+      if (this->getX() < (int)this->_maxX - 5) this->setX(this->getX() + 1);
       break;
     default:
       break;

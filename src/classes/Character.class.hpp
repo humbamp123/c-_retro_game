@@ -21,7 +21,7 @@ class Character {
   Character(int x, int y, int maxX, int maxY, unsigned int level,
             unsigned int hitPoints, unsigned int maxHitPoints,
             unsigned int energyPoints, unsigned int maxEnergyPoints,
-            unsigned int attackDamage, char sprite);
+            unsigned int attackDamage, char sprite, std::string spriteString);
   Character(void);
   Character(Character const &src);
   Character &operator=(Character const &rhs);
@@ -43,6 +43,7 @@ class Character {
   char getSprite(void);
   void clearSprite(void);
   void putSprite(void);
+  void putSpriteString(void);
   void putSprite(int color);
 
  protected:
@@ -57,6 +58,7 @@ class Character {
   unsigned int _maxEnergyPoints;
   unsigned int _attackDamage;
   char _sprite;
+  std::string _spriteString;
 };
 
 #endif
