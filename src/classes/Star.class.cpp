@@ -6,13 +6,13 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 21:12:41 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 21:41:03 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 21:46:13 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Star.class.hpp"
 
-Star::Star(void) : Character(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '.') {
+Star::Star(void) : Character(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '.', ".") {
   this->_status = false;
 }
 
