@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 22:47:20 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 23:10:05 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Game &Game::operator=(Game const &) { return (*this); }
 
 Game::~Game() { endwin(); }
 
-void Game::screenCheck(Player &master, Asteroids &arbiters, Space &stars) {
+void Game::screenCheck(Player &master, Asteroids &arbiters, Space &stars, double elapsed_seconds) {
   getmaxyx(this->wnd, this->_yMax, this->_xMax);
   if (master.getMaxX() != this->_yMax || master.getMaxY() != this->_xMax) {
     master.setXYMax(this->_xMax, this->_yMax - _scoreSize + 1);
@@ -67,7 +67,7 @@ void Game::screenCheck(Player &master, Asteroids &arbiters, Space &stars) {
   if (this->_score != this->_maxScore) {
     this->_maxScore = this->_score;
   }
-  mvwprintw(this->wnd, this->_yMax - 2, 1, "Score : %d", this->_maxScore);
+  mvwprintw(this->wnd, this->_yMax - 2, 1, "Score : %d Time : %f", this->_maxScore, elapsed_seconds);
   wrefresh(this->wnd);
 }
 
@@ -168,6 +168,7 @@ void Game::fireMissiles(Player &master, Asteroids &arbiters,
 void Game::run() {
   unsigned int xmax;
   unsigned int ymax;
+  std::chrono::time_point<std::chrono::system_clock> start, end;
   int enemyAmount = 100;
   int bulletAmount = 30;
   getmaxyx(this->wnd, ymax, xmax);
@@ -176,9 +177,11 @@ void Game::run() {
   MissileRain bullets(bulletAmount, 1);
   MissileRain lasers(bulletAmount, -2);
   Space stars(100, xmax, ymax);
+  std::chrono::duration<double> elapsed_seconds = std::chrono::system_clock::now() - std::chrono::system_clock::now();
   refresh();
   while (42) {
-    screenCheck(master, arbiters, stars);
+    start = std::chrono::system_clock::now();
+    screenCheck(master, arbiters, stars, elapsed_seconds.count());
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
     if (master.getExit() == true) break;
@@ -189,6 +192,8 @@ void Game::run() {
     master.putSpriteString(6);
     refresh();
     usleep(30000);
+    end = std::chrono::system_clock::now();
+    elapsed_seconds += end - start;
   }
   // delwin(text);
   delwin(wnd);

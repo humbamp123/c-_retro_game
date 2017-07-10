@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:50:22 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 22:46:31 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 23:09:29 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Game {
 
   WINDOW* wnd;
   void run();
-  void screenCheck(Player& master, Asteroids& arbiters, Space& stars);
+  void screenCheck(Player& master, Asteroids& arbiters, Space& stars, double elapsed_seconds);
 
  private:
   int _xMax;
