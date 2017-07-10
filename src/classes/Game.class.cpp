@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 20:40:36 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 20:56:37 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,15 +120,18 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
         return (1);
       } else {
         for (size_t j = 0; j < bullets.getDataSize(); j++) {
-          if (bullets.getData()[j].isFired()
-          && (bullets.getData()[j].getX() + 1 > this->_xMax
-          || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
-          || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
-          || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
+          if (bullets.getData()[j].isFired() &&
+                        (bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
+                        || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
+                        || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
             bullets.getData()[j].clearSprite();
             bullets.getData()[j].setIsFired(false);
             arbiters.getData()[i].clearSprite();
             arbiters.getData()[i].setStatus(false);
+          }
+          else if (bullets.getData()[j].isFired() && bullets.getData()[j].getX() + 1 > this->_xMax) {
+            bullets.getData()[j].clearSprite();
+            bullets.getData()[j].setIsFired(false);
           }
         }
       }
@@ -150,7 +153,7 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
 void Game::fireMissiles(Player &master, Asteroids &arbiters,
                         MissileRain &bullets, MissileRain &lasers) {
   for (size_t i = 0; i < lasers.getDataSize(); i++) {
-    if (lasers.getData()[i].getX() < 3) {
+    if (lasers.getData()[i].isFired() && lasers.getData()[i].getX() < 3) {
       lasers.getData()[i].clearSprite();
       lasers.getData()[i].setIsFired(false);
     }
