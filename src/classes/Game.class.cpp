@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 18:32:56 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 19:14:15 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 //   int score_size = 3;
 //   initscr();
 //   noecho();
-//   curs_set(FALSE);   // get our maximum window dimensions 
-//   getmaxyx(stdscr,parent_y, parent_x); // set up initial windows 
+//   curs_set(FALSE);   // get our maximum window dimensions
+//   getmaxyx(stdscr,parent_y, parent_x); // set up initial windows
 //   WINDOW *field =
 // newwin(parent_y - score_size, parent_x, 0, 0);
 // WINDOW *score =
@@ -172,7 +172,7 @@ void Game::run() {
     screenCheck(master);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
-
+    if (master.getExit() == true) break;
     fireMissiles(master, arbiters, bullets);
     if (gameCollisions(master, arbiters, bullets)) {
       break;
@@ -180,7 +180,7 @@ void Game::run() {
     arbiters.update();
     master.putSprite();
     refresh();
-    if (master.getExit() == true) break;
+
     usleep(30000);
   }
   delwin(text);

@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:00:50 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 17:14:11 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 18:48:00 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void Player::movePlayer(unsigned int in_char) {
   this->clearSprite();
   switch (in_char) {
     case 'q':
+    case 27:
       this->_exit_requested = true;
       break;
     case ' ':
