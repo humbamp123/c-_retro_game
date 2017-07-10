@@ -12,7 +12,8 @@
 
 #include "Player.class.hpp"
 
-Player::Player(void) : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, '0', "<0>") {
+Player::Player(void)
+    : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, '0', "<0>") {
 #ifdef FT_DEBUG
   std::cout << "Player constructor Called" << std::endl;
 #endif
@@ -24,7 +25,7 @@ Player::Player(unsigned int max_y)
   this->_x = 2;
   this->_y = max_y / 2;
   this->_fire = false;
-  putSprite();
+  putSpriteString(6);
 #ifdef FT_DEBUG
   std::cout << "Player constructor Called" << std::endl;
 #endif

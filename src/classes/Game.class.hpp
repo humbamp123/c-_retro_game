@@ -32,7 +32,7 @@ class Game {
 
   WINDOW* wnd;
   void run();
-  void screenCheck(Player& master, Asteroids &arbiters, Space &stars);
+  void screenCheck(Player& master, Asteroids& arbiters, Space& stars);
 
  private:
   int _xMax;
@@ -40,10 +40,10 @@ class Game {
   int _scoreSize;
   unsigned int _score;
   unsigned int _maxScore;
-  bool gameCollisions(Player& master, Asteroids& arbiters,
-                      MissileRain& bullets, MissileRain &lasers);
-  void fireMissiles(Player &master, Asteroids &arbiters,
-                    MissileRain &bullets, MissileRain &lasers);
+  bool gameCollisions(Player& master, Asteroids& arbiters, MissileRain& bullets,
+                      MissileRain& lasers);
+  void fireMissiles(Player& master, Asteroids& arbiters, MissileRain& bullets,
+                    MissileRain& lasers);
 };
 
 #endif

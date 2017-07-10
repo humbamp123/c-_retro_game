@@ -28,6 +28,7 @@ class Missile : public Player, public Enemy {
   bool isFired(void);
   void setIsFired(bool);
   void setDirection(short direction);
+
  private:
   bool _isFired;
   short _direction;

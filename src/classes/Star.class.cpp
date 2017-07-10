@@ -16,16 +16,14 @@ Star::Star(void) : Character(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '.', ".") {
   this->_status = false;
 }
 
-Star::Star(Star const & src) : Character(src) {
-}
+Star::Star(Star const &src) : Character(src) {}
 
-Star & Star::operator=(Star const &rhs) {
+Star &Star::operator=(Star const &rhs) {
   Character::operator=(rhs);
   return (*this);
 }
 
-Star::~Star(void) {
-}
+Star::~Star(void) {}
 
 void Star::spawn(void) {
   this->_x = this->_maxX - 3 + arc4random() % 2;
@@ -42,5 +40,5 @@ int Star::getBounds(void) { return (this->_bounds); }
 void Star::moveStar(void) {
   clearSprite();
   this->_x += this->_xDirection;
-  putSprite();
+  putSprite(8);
 }

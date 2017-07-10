@@ -25,8 +25,9 @@ Game::Game() : _xMax(0), _yMax(0) {
   cbreak();   // Allows user typed characters to be immediately available
   noecho();   // does not echo any characters grabbed by getch
   refresh();  // must be used after any changes have been made
-  keypad(this->wnd, true);    // Allows keys to be interpreted for actions
-  nodelay(this->wnd, true);   // This diables stoping everything when using wgetch()
+  keypad(this->wnd, true);  // Allows keys to be interpreted for actions
+  nodelay(this->wnd,
+          true);        // This diables stoping everything when using wgetch()
   curs_set(0);          // Makes the cursor visible or invisible
   if (!has_colors()) {  // Macro to check if the terminal supports color
     endwin();
@@ -40,7 +41,6 @@ Game::Game(Game const &src) { *this = src; }
 Game &Game::operator=(Game const &) { return (*this); }
 
 Game::~Game() { endwin(); }
-
 
 void Game::screenCheck(Player &master, Asteroids &arbiters, Space &stars) {
   getmaxyx(this->wnd, this->_yMax, this->_xMax);
@@ -70,19 +70,25 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
   for (size_t i = 0; i < arbiters.getDataSize(); i++) {
     if (arbiters.getData()[i].getStatus()) {
       if (master.checkCollision(arbiters.getData()[i].getX(),
-          arbiters.getData()[i].getY())
-        || master.checkCollision(arbiters.getData()[i].getX() - 1,
-          arbiters.getData()[i].getY())
-        || master.checkCollision(arbiters.getData()[i].getX() + 1,
-          arbiters.getData()[i].getY())) {
+                                arbiters.getData()[i].getY()) ||
+          master.checkCollision(arbiters.getData()[i].getX() - 1,
+                                arbiters.getData()[i].getY()) ||
+          master.checkCollision(arbiters.getData()[i].getX() + 1,
+                                arbiters.getData()[i].getY())) {
         endwin();
         return (1);
       } else {
         for (size_t j = 0; j < bullets.getDataSize(); j++) {
           if (bullets.getData()[j].isFired() &&
-(bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
-|| bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
-|| bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
+              (bullets.getData()[j].checkCollision(
+                   arbiters.getData()[i].getX(),
+                   arbiters.getData()[i].getY()) ||
+               bullets.getData()[j].checkCollision(
+                   arbiters.getData()[i].getX() + 1,
+                   arbiters.getData()[i].getY()) ||
+               bullets.getData()[j].checkCollision(
+                   arbiters.getData()[i].getX() - 1,
+                   arbiters.getData()[i].getY()))) {
             bullets.getData()[j].clearSprite();
             bullets.getData()[j].setIsFired(false);
             arbiters.getData()[i].clearSprite();
@@ -92,8 +98,8 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
               arbiters.getData()[i].setLevel(2);
             else if (this->_maxScore > 500)
               arbiters.getData()[i].setLevel(3);
-          }
-          else if (bullets.getData()[j].isFired() && bullets.getData()[j].getX() + 1 > this->_xMax - 2) {
+          } else if (bullets.getData()[j].isFired() &&
+                     bullets.getData()[j].getX() + 1 > this->_xMax - 2) {
             bullets.getData()[j].clearSprite();
             bullets.getData()[j].setIsFired(false);
           }
@@ -103,9 +109,12 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
   }
   for (size_t i = 0; i < lasers.getDataSize(); i++) {
     if (lasers.getData()[i].isFired()) {
-      if (master.checkCollision(lasers.getData()[i].getX(), lasers.getData()[i].getY())
-      || master.checkCollision(lasers.getData()[i].getX() + 1, lasers.getData()[i].getY())
-      || master.checkCollision(lasers.getData()[i].getX() - 1, lasers.getData()[i].getY())) {
+      if (master.checkCollision(lasers.getData()[i].getX(),
+                                lasers.getData()[i].getY()) ||
+          master.checkCollision(lasers.getData()[i].getX() + 1,
+                                lasers.getData()[i].getY()) ||
+          master.checkCollision(lasers.getData()[i].getX() - 1,
+                                lasers.getData()[i].getY())) {
         endwin();
         return (1);
       }
@@ -133,17 +142,17 @@ void Game::fireMissiles(Player &master, Asteroids &arbiters,
     }
     master.noFire();
   }
-    for (size_t i = 0; i < arbiters.getDataSize(); i++) {
-      if (arbiters.getData()[i].getStatus()) {
-        for (size_t j = 0; j < lasers.getDataSize(); j++) {
-          if (lasers.getData()[j].isFired() == false) {
-            lasers.getData()[j].setIsFired(true);
-            lasers.getData()[j].setY(arbiters.getData()[i].getY());
-            lasers.getData()[j].setX(arbiters.getData()[i].getX() - 1);
-          }
+  for (size_t i = 0; i < arbiters.getDataSize(); i++) {
+    if (arbiters.getData()[i].getStatus()) {
+      for (size_t j = 0; j < lasers.getDataSize(); j++) {
+        if (lasers.getData()[j].isFired() == false) {
+          lasers.getData()[j].setIsFired(true);
+          lasers.getData()[j].setY(arbiters.getData()[i].getY());
+          lasers.getData()[j].setX(arbiters.getData()[i].getX() - 1);
         }
       }
     }
+  }
   for (size_t i = 0; i < bullets.getDataSize(); i++) {
     bullets.getData()[i].update();
     lasers.getData()[i].update();
@@ -173,7 +182,7 @@ void Game::run() {
     }
     stars.update();
     arbiters.update();
-    master.putSpriteString();
+    master.putSpriteString(6);
     refresh();
     usleep(30000);
   }

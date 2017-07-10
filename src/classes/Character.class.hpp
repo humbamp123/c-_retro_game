@@ -45,6 +45,7 @@ class Character {
   void clearSprite(void);
   void putSprite(void);
   void putSpriteString(void);
+  void putSpriteString(int color);
   void putSprite(int color);
 
  protected:

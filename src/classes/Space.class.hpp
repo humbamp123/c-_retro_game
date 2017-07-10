@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef SPACE_H
-# define SPACE_H
+#define SPACE_H
 
 #include "Star.class.hpp"
 
@@ -19,13 +19,14 @@ class Space {
  public:
   Space(void);
   Space(int n, int xMax, int yMax);
-  Space(Space const & src);
-  Space & operator=(Space const &rhs);
+  Space(Space const &src);
+  Space &operator=(Space const &rhs);
   ~Space(void);
 
   Star *getData(void) const;
   unsigned int getDataSize(void) const;
   void update(void);
+
  private:
   Star *_starField;
   unsigned int _size;

@@ -13,7 +13,8 @@
 #include "Enemy.class.hpp"
 #include <unistd.h>
 
-Enemy::Enemy(void) : Character(10, 84, 0, 0, 1, 190, 200, 140, 150, 15, 'X', "X") {
+Enemy::Enemy(void)
+    : Character(10, 84, 0, 0, 1, 190, 200, 140, 150, 15, 'X', "X") {
   this->_status = false;
 #ifdef FT_DEBUG
   std::cout << "Enemy constructor Called" << std::endl;
@@ -42,8 +43,10 @@ void Enemy::spawn(void) {
     this->_xDirection = -1;
     this->_yDirection = 0;
   } else if (this->_level == 2) {
-    this->_x = random ? (arc4random() % (this->_maxX - 2)) + 1 : this->_maxX - 3 + arc4random() % 2;
-    this->_y = random ? this->_maxY - 2 : (arc4random() % (this->_maxY - 4)) + 1;
+    this->_x = random ? (arc4random() % (this->_maxX - 2)) + 1
+                      : this->_maxX - 3 + arc4random() % 2;
+    this->_y =
+        random ? this->_maxY - 2 : (arc4random() % (this->_maxY - 4)) + 1;
     this->_xDirection = random ? 0 : -1;
     this->_yDirection = random ? -1 : 0;
   } else if (this->_level == 3) {
@@ -51,11 +54,6 @@ void Enemy::spawn(void) {
     this->_y = (arc4random() % (this->_maxY - 4)) + 1;
     this->_xDirection = this->_x < 3 ? 1 : -1;
     this->_yDirection = 0;
-  } else {
-    this->_x = (arc4random() % (this->_maxX - 2)) + 1;
-    this->_y = 1;
-    this->_xDirection = 0;
-    this->_yDirection = 1;
   }
   putSprite();
 }

@@ -45,7 +45,8 @@ void Asteroids::update() {
     if (this->_asteroidField[i].getStatus() == false && !(rand() % 100)) {
       this->_asteroidField[i].spawn();
       this->_asteroidField[i].setStatus(true);
-    } else if (this->_asteroidField[i].getX() < 2 || this->_asteroidField[i].getY() < 2) {
+    } else if (this->_asteroidField[i].getX() < 2 ||
+               this->_asteroidField[i].getY() < 2) {
       this->_asteroidField[i].clearSprite();
       this->_asteroidField[i].setStatus(false);
       if (!(rand() % 100)) {
