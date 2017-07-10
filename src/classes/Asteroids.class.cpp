@@ -21,7 +21,7 @@ Asteroids::Asteroids(int n, int xmax, int ymax) : _size(n) {
   for (int i = 0; i < n; i++) {
     this->_asteroidField[i].setXYMax(xmax, ymax);
   }
-  std::cout << "Asteroid Field Created" << std::endl;
+  // std::cout << "Asteroid Field Created" << std::endl;
 }
 
 Asteroids::Asteroids(Asteroids const &src) { *this = src; }

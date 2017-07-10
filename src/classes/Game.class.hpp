@@ -30,8 +30,16 @@ class Game {
   ~Game(void);
 
   WINDOW* wnd;
+  WINDOW* text;
   void run();
   void screenCheck(Player& master);
+  bool gameCollisions(Player& master, Asteroids& arbiters, MissileRain& bullets);
+  private:
+  int _xMax;
+  int _yMax;
+  int _scoreSize;
+  unsigned int _score;
+  unsigned int _maxScore;
   bool gameCollisions(Player& master, Asteroids& arbiters,
                       MissileRain& bullets);
   void fireMissiles(Player &master, Asteroids &arbiters,

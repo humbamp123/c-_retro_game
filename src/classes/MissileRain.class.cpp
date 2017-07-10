@@ -13,12 +13,12 @@
 #include "MissileRain.class.hpp"
 
 MissileRain::MissileRain(void) : _size(0) {
-  std::cout << "MissileRain Default Constructor called" << std::endl;
+  // std::cout << "MissileRain Default Constructor called" << std::endl;
 }
 
 MissileRain::MissileRain(int n) : _size(n) {
   this->_missileField = new Missile[n];
-  std::cout << "MissileRain Field Created" << std::endl;
+  // std::cout << "MissileRain Field Created" << std::endl;
 }
 
 MissileRain::MissileRain(MissileRain const &src) { *this = src; }
