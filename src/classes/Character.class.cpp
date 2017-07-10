@@ -15,7 +15,7 @@
 Character::Character(int x, int y, int maxX, int maxY, unsigned int level,
                      unsigned int hitPoints, unsigned int maxHitPoints,
                      unsigned int energyPoints, unsigned int maxEnergyPoints,
-                     unsigned int attackDamage, char sprite)
+                     unsigned int attackDamage, char sprite, std::string spriteString)
     : _x(x),
       _y(y),
       _maxX(maxX),
@@ -26,7 +26,8 @@ Character::Character(int x, int y, int maxX, int maxY, unsigned int level,
       _energyPoints(energyPoints),
       _maxEnergyPoints(maxEnergyPoints),
       _attackDamage(attackDamage),
-      _sprite(sprite) {
+      _sprite(sprite),
+      _spriteString(spriteString) {
 #ifdef FT_DEBUG
   std::cout << "Character constructor Called" << std::endl;
 #endif
@@ -43,7 +44,8 @@ Character::Character(void)
       _energyPoints(40),
       _maxEnergyPoints(50),
       _attackDamage(5),
-      _sprite('X') {
+      _sprite('X'),
+      _spriteString(" ") {
   std::cout << "Character default constructor Called" << std::endl;
 }
 
@@ -64,6 +66,7 @@ Character &Character::operator=(Character const &rhs) {
   this->_maxEnergyPoints = rhs._maxEnergyPoints;
   this->_attackDamage = rhs._attackDamage;
   this->_sprite = rhs._sprite;
+  this->_spriteString = rhs._spriteString;
   std::cout << "Character '=' operator called" << std::endl;
   return (*this);
 }
@@ -105,6 +108,12 @@ unsigned int Character::getAttackDamage(void) { return (this->_attackDamage); }
 char Character::getSprite(void) { return (this->_sprite); }
 
 void Character::clearSprite(void) { mvaddch(this->_y, this->_x, ' '); }
+
+void Character::putSpriteString(void) { 
+  for (size_t i = 0; i < this->_spriteString.length(); i++) {
+    mvaddch(this->_y, this->_x - 1 + i, this->_spriteString[i]);
+  }
+}
 
 void Character::putSprite(void) { mvaddch(this->_y, this->_x, this->_sprite); }
 

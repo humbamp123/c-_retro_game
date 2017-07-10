@@ -13,7 +13,7 @@
 #include "Missile.class.hpp"
 
 Missile::Missile(void)
-    : Character(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '-'), Player(0) {
+    : Character(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '-', "-"), Player(0) {
   std::cout << "Default constructor called" << std::endl;
   this->_isFired = false;
 }
