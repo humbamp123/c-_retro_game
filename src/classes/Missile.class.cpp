@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 14:11:32 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 19:58:14 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:32:24 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,8 @@
 
 Missile::Missile(void)
     : Character(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '-', "-"), Player(0) {
-  std::cout << "Default constructor called" << std::endl;
   this->_isFired = false;
 }
-
-// Missile::Missile(short direction)
-//     : Character(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '-'), Player(0) {
-//   this->_isFired = false;
-//   this->_direction = direction;
-// }
 
 Missile::Missile(Missile const &src) { *this = src; }
 

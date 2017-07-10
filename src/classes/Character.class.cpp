@@ -15,7 +15,8 @@
 Character::Character(int x, int y, int maxX, int maxY, unsigned int level,
                      unsigned int hitPoints, unsigned int maxHitPoints,
                      unsigned int energyPoints, unsigned int maxEnergyPoints,
-                     unsigned int attackDamage, char sprite, std::string spriteString)
+                     unsigned int attackDamage, char sprite,
+                     std::string spriteString)
     : _x(x),
       _y(y),
       _maxX(maxX),
@@ -109,15 +110,13 @@ char Character::getSprite(void) { return (this->_sprite); }
 
 void Character::clearSprite(void) { mvaddch(this->_y, this->_x, ' '); }
 
-void Character::putSpriteString(void) { 
+void Character::putSpriteString(void) {
   for (size_t i = 0; i < this->_spriteString.length(); i++) {
     mvaddch(this->_y, this->_x - 1 + i, this->_spriteString[i]);
   }
 }
 
-void Character::setLevel(int level) {
-  this->_level = level;
-}
+void Character::setLevel(int level) { this->_level = level; }
 
 void Character::putSprite(void) { mvaddch(this->_y, this->_x, this->_sprite); }
 
@@ -129,5 +128,3 @@ void Character::putSprite(int color) {
   mvaddch(this->_y, this->_x, this->_sprite);
   attroff(COLOR_PAIR(1));
 }
-
-

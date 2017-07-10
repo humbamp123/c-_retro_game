@@ -11,15 +11,15 @@
 /* ************************************************************************** */
 
 #ifndef STAR_H
-# define STAR_H
+#define STAR_H
 
-# include "Character.class.hpp"
+#include "Character.class.hpp"
 
 class Star : public Character {
  public:
   Star(void);
-  Star(Star const & src);
-  Star & operator=(Star const &rhs);
+  Star(Star const &src);
+  Star &operator=(Star const &rhs);
   ~Star(void);
 
   void spawn(void);
@@ -27,6 +27,7 @@ class Star : public Character {
   bool getStatus(void);
   int getBounds(void);
   void moveStar(void);
+
  private:
   int _xDirection;
   bool _status;
