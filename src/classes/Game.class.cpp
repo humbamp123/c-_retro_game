@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 20:30:06 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 20:40:36 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,6 @@ void Game::fireMissiles(Player &master, Asteroids &arbiters,
     bullets.getData()[i].update();
     lasers.getData()[i].update();
   }
-  (void)arbiters;
 }
 
 void Game::run() {
