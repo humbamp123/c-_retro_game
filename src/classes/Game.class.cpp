@@ -132,8 +132,9 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
             bullets.getData()[j].setIsFired(false);
             arbiters.getData()[i].clearSprite();
             arbiters.getData()[i].setStatus(false);
+            this->_score += 1;
           }
-          else if (bullets.getData()[j].isFired() && bullets.getData()[j].getX() + 1 > this->_xMax) {
+          else if (bullets.getData()[j].isFired() && bullets.getData()[j].getX() + 1 > this->_xMax - 2) {
             bullets.getData()[j].clearSprite();
             bullets.getData()[j].setIsFired(false);
           }
