@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:50:22 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 11:10:06 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 17:21:35 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 #include <unistd.h>
 #include <iostream>
 #include <string>
-#include "Player.class.hpp"
 #include "Asteroids.class.hpp"
 #include "MissileRain.class.hpp"
+#include "Player.class.hpp"
 
 class Game {
  public:
@@ -40,6 +40,12 @@ class Game {
   int _scoreSize;
   unsigned int _score;
   unsigned int _maxScore;
+  bool gameCollisions(Player& master, Asteroids& arbiters,
+                      MissileRain& bullets);
+  void fireMissiles(Player &master, Asteroids &arbiters,
+                          MissileRain &bullets);
+  int xMax;
+  int yMax;
 };
 
 #endif

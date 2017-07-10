@@ -12,10 +12,10 @@
 
 #include "Character.class.hpp"
 
-Character::Character(int x, int y, int maxX, int maxY, unsigned int level, unsigned int hitPoints,
-                     unsigned int maxHitPoints, unsigned int energyPoints,
-                     unsigned int maxEnergyPoints, unsigned int attackDamage,
-                     char sprite)
+Character::Character(int x, int y, int maxX, int maxY, unsigned int level,
+                     unsigned int hitPoints, unsigned int maxHitPoints,
+                     unsigned int energyPoints, unsigned int maxEnergyPoints,
+                     unsigned int attackDamage, char sprite)
     : _x(x),
       _y(y),
       _maxX(maxX),

@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:00:50 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 14:07:51 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 17:14:11 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ Player &Player::operator=(Player const &rhs) {
 
 Player::~Player(void) { std::cout << "Player destructor Called" << std::endl; }
 
-bool Player::getExit() { return (this->_exit_requested); }
+bool Player::getExit(void) { return (this->_exit_requested); }
 
-bool Player::getFire() { return (this->_fire); }
+bool Player::getFire(void) { return (this->_fire); }
+
+void Player::noFire(void) { this->_fire = false; }
 
 void Player::movePlayer(unsigned int in_char) {
   this->clearSprite();
@@ -63,8 +65,7 @@ void Player::movePlayer(unsigned int in_char) {
     case KEY_DOWN:
     case 's':
     case 'k':
-      if (this->getY() < (int)this->_maxY - 2)
-        this->setY(this->getY() + 1);
+      if (this->getY() < (int)this->_maxY - 2) this->setY(this->getY() + 1);
       break;
     case KEY_LEFT:
     case 'a':
@@ -74,8 +75,7 @@ void Player::movePlayer(unsigned int in_char) {
     case KEY_RIGHT:
     case 'd':
     case 'l':
-      if (this->getX() < (int)this->_maxX - 2)
-        this->setX(this->getX() + 1);
+      if (this->getX() < (int)this->_maxX - 2) this->setX(this->getX() + 1);
       break;
     default:
       break;

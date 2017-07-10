@@ -11,23 +11,25 @@
 /* ************************************************************************** */
 
 #ifndef ASTEROIDS_H
-# define ASTEROIDS_H
+#define ASTEROIDS_H
 
-# include <iostream>
+#include <iostream>
 
-# include "Enemy.class.hpp"
+#include "Enemy.class.hpp"
 
 class Asteroids {
   Asteroids(void);
+
  public:
   Asteroids(int n, int xmax, int ymax);
-  Asteroids(Asteroids const & src);
-  Asteroids & operator=(Asteroids const &rhs);
+  Asteroids(Asteroids const &src);
+  Asteroids &operator=(Asteroids const &rhs);
   ~Asteroids(void);
 
   Enemy *getData(void) const;
   unsigned int getDataSize(void) const;
   void update(void);
+
  private:
   Enemy *_asteroidField;
   unsigned int _size;
