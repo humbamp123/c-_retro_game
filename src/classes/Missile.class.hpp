@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 14:11:56 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 19:58:18 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:31:09 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 class Missile : public Player, public Enemy {
  public:
   Missile(void);
-  // Missile(short direction);
   Missile(Missile const &src);
   Missile &operator=(Missile const &rhs);
   ~Missile(void);

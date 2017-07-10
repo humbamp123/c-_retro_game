@@ -116,6 +116,7 @@ void Character::putSpriteString(void) {
   }
 }
 
+
 void Character::putSpriteString(int color) {
   start_color();
   init_pair(1, color, COLOR_BLACK);
