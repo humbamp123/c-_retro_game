@@ -41,6 +41,8 @@
 Game::Game() : _xMax(0), _yMax(0) {
   this->wnd = initscr();
   this->_scoreSize = 3;
+  this->_score = 0;
+  this->_maxScore = 0;
   cbreak();   // Allows user typed characters to be immediately available
   noecho();   // does not echo any characters grabbed by getch
   refresh();  // must be used after any changes have been made
@@ -95,19 +97,14 @@ void Game::screenCheck(Player &master) {
     master.setXYMax(this->_xMax, this->_yMax - _scoreSize + 1);
     // wresize(this->wnd, 50, 175); //change screen size here
     wclear(this->wnd);
-    // wclear(this->text);
     wattron(this->wnd, A_BOLD);   // Activates an atribute for the drawing, Bold in this case
     box(this->wnd, 0, 0);
     wattroff(this->wnd, A_BOLD);  // Deactivates an atribute for the drawing, Bold in this
                       // case
     wmove(this->wnd, this->_yMax - _scoreSize, 1);
     whline(this->wnd, '-', this->_xMax - 2);
-    whline(this->wnd, '-', this->_xMax - 2);
+    mvwprintw(this->wnd, this->_yMax - 2, 1, "Score : %d", this->_score);
     wrefresh(this->wnd);
-    // wrefresh(this->text);
-  } else if (this->_score != this->_maxScore) {
-    this->_maxScore = this->_score;
-
   }
 }
 
@@ -121,14 +118,17 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
       } else {
         for (size_t j = 0; j < bullets.getDataSize(); j++) {
           if (bullets.getData()[j].isFired()
-          && (bullets.getData()[j].getX() + 1 > this->_xMax
-          || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
+          && (bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
           || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
           || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
             bullets.getData()[j].clearSprite();
             bullets.getData()[j].setIsFired(false);
             arbiters.getData()[i].clearSprite();
             arbiters.getData()[i].setStatus(false);
+            this->_score += 1;
+          } else if (bullets.getData()[j].getX() + 1 > this->_xMax - 2) {
+            bullets.getData()[j].clearSprite();
+            bullets.getData()[j].setIsFired(false);
           }
         }
       }
@@ -183,7 +183,6 @@ void Game::run() {
     if (master.getExit() == true) break;
     usleep(30000);
   }
-  delwin(text);
   delwin(wnd);
   endwin();
 }

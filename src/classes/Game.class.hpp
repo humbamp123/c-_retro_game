@@ -30,7 +30,6 @@ class Game {
   ~Game(void);
 
   WINDOW* wnd;
-  WINDOW* text;
   void run();
   void screenCheck(Player& master);
   private:

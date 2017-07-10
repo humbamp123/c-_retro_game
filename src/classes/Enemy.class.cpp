@@ -41,9 +41,9 @@ void Enemy::spawn(void) {
     this->_xDirection = -1;
     this->_yDirection = 0;
   } else if (this->_level == 2) {
-    this->_x = 1;
+    this->_x = rand() % 2 ? 2 : this->_maxX - 3 + arc4random() % 2;
     this->_y = (arc4random() % (this->_maxY - 4)) + 1;
-    this->_xDirection = 1;
+    this->_xDirection = this->_x < 3 ? 1 : -1;
     this->_yDirection = 0;
   } else if (this->_level == 3) {
     this->_x = (arc4random() % (this->_maxX - 2)) + 1;
