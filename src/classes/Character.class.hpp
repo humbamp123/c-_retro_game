@@ -35,7 +35,7 @@ class Character {
   int getMaxY(void);
   void setXYMax(int xmax, int ymax);
   void setSprite(int sprite);
-  void setLevel();
+  void setLevel(int level);
   unsigned int getHitPoints(void);
   unsigned int getMaxHitPoints(void);
   unsigned int getEnergyPoints(void);

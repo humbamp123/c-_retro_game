@@ -115,8 +115,8 @@ void Character::putSpriteString(void) {
   }
 }
 
-void Character::setLevel(void) {
-  this->_level += 1;
+void Character::setLevel(int level) {
+  this->_level = level;
 }
 
 void Character::putSprite(void) { mvaddch(this->_y, this->_x, this->_sprite); }
