@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:50:22 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 17:21:35 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 20:15:09 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,17 @@ class Game {
   WINDOW* wnd;
   void run();
   void screenCheck(Player& master);
-  private:
+
+ private:
   int _xMax;
   int _yMax;
   int _scoreSize;
   unsigned int _score;
   unsigned int _maxScore;
   bool gameCollisions(Player& master, Asteroids& arbiters,
-                      MissileRain& bullets);
+                      MissileRain& bullets, MissileRain &lasers);
   void fireMissiles(Player &master, Asteroids &arbiters,
-                          MissileRain &bullets);
+                    MissileRain &bullets, MissileRain &lasers);
 };
 
 #endif
