@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 20:56:37 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 21:01:50 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,15 +119,16 @@ bool Game::gameCollisions(Player &master, Asteroids &arbiters,
                           MissileRain &bullets, MissileRain &lasers) {
   for (size_t i = 0; i < arbiters.getDataSize(); i++) {
     if (arbiters.getData()[i].getStatus()) {
-      if (master.checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())) {
+      if (master.checkCollision(arbiters.getData()[i].getX(),
+          arbiters.getData()[i].getY())) {
         endwin();
         return (1);
       } else {
         for (size_t j = 0; j < bullets.getDataSize(); j++) {
           if (bullets.getData()[j].isFired() &&
-                        (bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
-                        || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
-                        || bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
+(bullets.getData()[j].checkCollision(arbiters.getData()[i].getX(), arbiters.getData()[i].getY())
+|| bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() + 1 , arbiters.getData()[i].getY())
+|| bullets.getData()[j].checkCollision(arbiters.getData()[i].getX() - 1, arbiters.getData()[i].getY()))) {
             bullets.getData()[j].clearSprite();
             bullets.getData()[j].setIsFired(false);
             arbiters.getData()[i].clearSprite();
