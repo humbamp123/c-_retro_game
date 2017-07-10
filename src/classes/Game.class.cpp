@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 18:27:25 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 18:32:56 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,12 +143,13 @@ void Game::run() {
     screenCheck(master);
     unsigned int in_char = wgetch(this->wnd);
     master.movePlayer(in_char);
-    master.putSprite();
+
     fireMissiles(master, arbiters, bullets);
     if (gameCollisions(master, arbiters, bullets)) {
       break;
     }
     arbiters.update();
+    master.putSprite();
     refresh();
     if (master.getExit() == true) break;
     usleep(30000);
