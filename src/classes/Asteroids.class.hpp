@@ -22,6 +22,7 @@ class Asteroids {
 
  public:
   Asteroids(int n, int xmax, int ymax);
+  Asteroids(int xmax, int ymax);
   Asteroids(Asteroids const &src);
   Asteroids &operator=(Asteroids const &rhs);
   ~Asteroids(void);

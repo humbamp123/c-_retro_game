@@ -76,7 +76,7 @@ void Player::movePlayer(unsigned int in_char) {
     case KEY_RIGHT:
     case 'd':
     case 'l':
-      if (this->getX() < (int)this->_maxX - 2) this->setX(this->getX() + 1);
+      if (this->getX() < (int)this->_maxX - 4) this->setX(this->getX() + 1);
       break;
     default:
       break;

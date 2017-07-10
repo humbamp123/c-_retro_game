@@ -178,9 +178,8 @@ void Game::run() {
       break;
     }
     arbiters.update();
-    master.putSprite();
+    master.putSprite(8);
     refresh();
-
     usleep(30000);
   }
   delwin(wnd);
