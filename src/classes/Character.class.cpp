@@ -123,7 +123,7 @@ void Character::putSprite(int initcolor, int color) {
   start_color();
   init_pair(initcolor, color, COLOR_BLACK);
 
-  attron(COLOR_PAIR(1));
+  attron(COLOR_PAIR(initcolor));
   mvaddch(this->_y, this->_x, this->_sprite);
-  attroff(COLOR_PAIR(1));
+  attroff(COLOR_PAIR(initcolor));
 }
