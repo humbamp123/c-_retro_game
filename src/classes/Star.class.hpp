@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Asteroids.class.hpp                                :+:      :+:    :+:   */
+/*   Star.class.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/09 12:14:53 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 21:36:02 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/07/09 21:12:45 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/07/09 21:42:52 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASTEROIDS_H
-#define ASTEROIDS_H
+#ifndef STAR_H
+# define STAR_H
 
-#include <iostream>
+# include "Character.class.hpp"
 
-#include "Enemy.class.hpp"
-
-class Asteroids {
-  Asteroids(void);
-
+class Star : public Character {
  public:
-  Asteroids(int n, int xmax, int ymax);
-  Asteroids(Asteroids const &src);
-  Asteroids &operator=(Asteroids const &rhs);
-  ~Asteroids(void);
+  Star(void);
+  Star(Star const & src);
+  Star & operator=(Star const &rhs);
+  ~Star(void);
 
-  Enemy *getData(void) const;
-  unsigned int getDataSize(void) const;
-  void update(void);
-
+  void spawn(void);
+  void setStatus(bool status);
+  bool getStatus(void);
+  int getBounds(void);
+  void moveStar(void);
  private:
-  Enemy *_asteroidField;
-  unsigned int _size;
+  int _xDirection;
+  bool _status;
+  int _bounds;
 };
 
 #endif

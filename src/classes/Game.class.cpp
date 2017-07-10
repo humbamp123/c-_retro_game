@@ -6,7 +6,7 @@
 /*   By: apineda <apineda@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:53:16 by apineda           #+#    #+#             */
-/*   Updated: 2017/07/09 21:01:50 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 21:37:29 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Enemy.class.hpp"
 #include "MissileRain.class.hpp"
 #include "Player.class.hpp"
+#include "Space.class.hpp"
 
 // #include <ncurses.h> #include <unistd.h> int main(int argc, char *argv[]) {
 //   int parent_x, parent_y;
@@ -108,7 +109,7 @@ void Game::screenCheck(Player &master, Asteroids &arbiters) {
     wmove(this->wnd, this->_yMax - _scoreSize, 1);
     whline(this->wnd, '-', this->_xMax - 2);
     whline(this->wnd, '-', this->_xMax - 2);
-    
+
     // wrefresh(this->text);
   }
   if (this->_score != this->_maxScore) {
@@ -213,6 +214,7 @@ void Game::run() {
   Asteroids arbiters(enemyAmount, xmax, ymax);
   MissileRain bullets(bulletAmount, 1);
   MissileRain lasers(bulletAmount, -2);
+  Space stars(50, xmax, ymax);
   refresh();  // must be used after any changes have been made
   while (1) {
     screenCheck(master, arbiters);
@@ -223,6 +225,7 @@ void Game::run() {
     if (gameCollisions(master, arbiters, bullets, lasers)) {
       break;
     }
+    stars.update();
     arbiters.update();
     master.putSpriteString();
     refresh();

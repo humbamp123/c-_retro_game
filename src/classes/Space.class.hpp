@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Asteroids.class.hpp                                :+:      :+:    :+:   */
+/*   Space.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/09 12:14:53 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 21:36:02 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/07/09 21:25:44 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/07/09 21:39:58 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASTEROIDS_H
-#define ASTEROIDS_H
+#ifndef SPACE_H
+# define SPACE_H
 
-#include <iostream>
+#include "Star.class.hpp"
 
-#include "Enemy.class.hpp"
-
-class Asteroids {
-  Asteroids(void);
-
+class Space {
  public:
-  Asteroids(int n, int xmax, int ymax);
-  Asteroids(Asteroids const &src);
-  Asteroids &operator=(Asteroids const &rhs);
-  ~Asteroids(void);
+  Space(void);
+  Space(int n, int xMax, int yMax);
+  Space(Space const & src);
+  Space & operator=(Space const &rhs);
+  ~Space(void);
 
-  Enemy *getData(void) const;
+  Star *getData(void) const;
   unsigned int getDataSize(void) const;
   void update(void);
-
  private:
-  Enemy *_asteroidField;
+  Star *_starField;
   unsigned int _size;
 };
 
