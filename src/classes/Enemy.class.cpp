@@ -60,5 +60,5 @@ void Enemy::moveEnemy(void) {
   clearSprite();
   this->_x += this->_xDirection;
   this->_y += this->_yDirection;
-  putSprite();
+  putSprite(4, 9);
 }

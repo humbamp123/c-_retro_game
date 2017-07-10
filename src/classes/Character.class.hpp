@@ -45,8 +45,8 @@ class Character {
   void clearSprite(void);
   void putSprite(void);
   void putSpriteString(void);
-  void putSpriteString(int color);
-  void putSprite(int color);
+  void putSpriteString(int initcolor, int color);
+  void putSprite(int initcolor, int color);
 
  protected:
   int _x;

@@ -40,5 +40,5 @@ int Star::getBounds(void) { return (this->_bounds); }
 void Star::moveStar(void) {
   clearSprite();
   this->_x += this->_xDirection;
-  putSprite(8);
+  putSprite(2, 8);
 }

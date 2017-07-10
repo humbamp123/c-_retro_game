@@ -50,19 +50,12 @@ void Game::screenCheck(Player &master, Asteroids &arbiters, Space &stars, double
       stars.getData()[i].setXYMax(this->_xMax, this->_yMax);
     }
     wclear(this->wnd);
-    // wclear(this->text);
-    wattron(
-        this->wnd,
-        A_BOLD);  // Activates an atribute for the drawing, Bold in this case
+    wattron(this->wnd, A_BOLD);
     box(this->wnd, 0, 0);
-    wattroff(this->wnd,
-             A_BOLD);  // Deactivates an atribute for the drawing, Bold in this
-                       // case
+    wattroff(this->wnd, A_BOLD);
     wmove(this->wnd, this->_yMax - _scoreSize, 1);
     whline(this->wnd, '-', this->_xMax - 2);
     whline(this->wnd, '-', this->_xMax - 2);
-
-    // wrefresh(this->text);
   }
   if (this->_score != this->_maxScore) {
     this->_maxScore = this->_score;
@@ -189,7 +182,7 @@ void Game::run() {
     if (gameCollisions(master, arbiters, bullets, lasers)) break;
     stars.update();
     arbiters.update();
-    master.putSpriteString(6);
+    master.putSpriteString(1, 6);
     refresh();
     usleep(30000);
     end = std::chrono::system_clock::now();
