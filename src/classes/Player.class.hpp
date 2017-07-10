@@ -28,6 +28,7 @@ class Player : virtual public Character {
   bool checkCollision(int x, int y);
   bool getFire();
   void noFire();
+
  private:
   bool _exit_requested;
   bool _fire;

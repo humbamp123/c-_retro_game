@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 14:54:25 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 17:19:18 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 19:35:53 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 
 class MissileRain {
   MissileRain(void);
+
  public:
-  MissileRain(int n);
+  MissileRain(int n, short direction);
   MissileRain(MissileRain const &src);
   MissileRain &operator=(MissileRain const &rhs);
   ~MissileRain(void);
@@ -29,6 +30,7 @@ class MissileRain {
   void update();
   void setBulletIndex();
   void increaseBulletIndex();
+
  private:
   Missile *_missileField;
   unsigned int _size;
