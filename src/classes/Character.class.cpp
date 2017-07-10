@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:41:24 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 11:50:38 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:48:49 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@ Character::Character(int x, int y, int maxX, int maxY, unsigned int level,
       _maxEnergyPoints(maxEnergyPoints),
       _attackDamage(attackDamage),
       _sprite(sprite),
-      _spriteString(spriteString) {
-#ifdef FT_DEBUG
-  std::cout << "Character constructor Called" << std::endl;
-#endif
-}
+      _spriteString(spriteString) {}
 
 Character::Character(void)
     : _x(1),
@@ -46,14 +42,9 @@ Character::Character(void)
       _maxEnergyPoints(50),
       _attackDamage(5),
       _sprite('X'),
-      _spriteString(" ") {
-  std::cout << "Character default constructor Called" << std::endl;
-}
+      _spriteString(" ") {}
 
-Character::Character(Character const &src) {
-  *this = src;
-  std::cout << "Character copy constructor called" << std::endl;
-}
+Character::Character(Character const &src) { *this = src; }
 
 Character &Character::operator=(Character const &rhs) {
   this->_x = rhs._x;
@@ -68,12 +59,9 @@ Character &Character::operator=(Character const &rhs) {
   this->_attackDamage = rhs._attackDamage;
   this->_sprite = rhs._sprite;
   this->_spriteString = rhs._spriteString;
-  std::cout << "Character '=' operator called" << std::endl;
   return (*this);
 }
-Character::~Character(void) {
-  std::cout << "Character destructor Called" << std::endl;
-}
+Character::~Character(void) {}
 
 int Character::getX(void) { return (this->_x); }
 
@@ -115,7 +103,6 @@ void Character::putSpriteString(void) {
     mvaddch(this->_y, this->_x - 1 + i, this->_spriteString[i]);
   }
 }
-
 
 void Character::putSpriteString(int initcolor, int color) {
   start_color();

@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 16:35:27 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 17:20:25 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:49:35 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Player : virtual public Character {
   Player(Player const &src);
   Player &operator=(Player const &rhs);
   ~Player(void);
+
   void movePlayer(unsigned int in_char);
   bool getExit();
   bool checkCollision(int x, int y);

@@ -6,18 +6,14 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 17:00:50 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 18:48:00 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:49:27 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Player.class.hpp"
 
 Player::Player(void)
-    : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, '0', "<0>") {
-#ifdef FT_DEBUG
-  std::cout << "Player constructor Called" << std::endl;
-#endif
-}
+    : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, '0', "<0>") {}
 
 Player::Player(unsigned int max_y)
     : Character(1, 1, 0, 0, 0, 90, 100, 40, 50, 5, 'O', "<0>") {
@@ -25,23 +21,24 @@ Player::Player(unsigned int max_y)
   this->_x = 2;
   this->_y = max_y / 2;
   this->_fire = false;
+<<<<<<< HEAD
   putSpriteString(1, 6);
 #ifdef FT_DEBUG
   std::cout << "Player constructor Called" << std::endl;
 #endif
+=======
+  putSpriteString(6);
+>>>>>>> 43792cc390a02b964537e5d6fcfb354117972fe4
 }
 
-Player::Player(Player const &src) : Character(src) {
-  std::cout << "Player copy constructor called" << std::endl;
-}
+Player::Player(Player const &src) : Character(src) {}
 
 Player &Player::operator=(Player const &rhs) {
   Character::operator=(rhs);
-  std::cout << "Player '=' operator called" << std::endl;
   return (*this);
 }
 
-Player::~Player(void) { std::cout << "Player destructor Called" << std::endl; }
+Player::~Player(void) {}
 
 bool Player::getExit(void) { return (this->_exit_requested); }
 

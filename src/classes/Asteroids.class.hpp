@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/09 12:14:53 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 21:36:02 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:49:08 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define ASTEROIDS_H
 
 #include <iostream>
-
 #include "Enemy.class.hpp"
 
 class Asteroids {

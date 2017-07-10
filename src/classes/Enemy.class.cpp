@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 18:06:10 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/07/09 11:54:18 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/07/09 22:48:17 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,16 @@
 Enemy::Enemy(void)
     : Character(10, 84, 0, 0, 1, 190, 200, 140, 150, 15, 'X', "X") {
   this->_status = false;
-#ifdef FT_DEBUG
-  std::cout << "Enemy constructor Called" << std::endl;
-#endif
 }
 
-Enemy::Enemy(Enemy const &src) : Character(src) {
-#ifdef FT_DEBUG
-  std::cout << "Enemy copy constructor called" << std::endl;
-#endif
-}
+Enemy::Enemy(Enemy const &src) : Character(src) {}
 
 Enemy &Enemy::operator=(Enemy const &rhs) {
   Character::operator=(rhs);
-  std::cout << "Enemy '=' operator called" << std::endl;
   return (*this);
 }
 
-Enemy::~Enemy(void) { std::cout << "Enemy destructor Called" << std::endl; }
+Enemy::~Enemy(void) {}
 
 void Enemy::spawn(void) {
   int random = arc4random() % 2;
