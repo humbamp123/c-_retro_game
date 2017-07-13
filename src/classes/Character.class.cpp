@@ -98,6 +98,12 @@ char Character::getSprite(void) { return (this->_sprite); }
 
 void Character::clearSprite(void) { mvaddch(this->_y, this->_x, ' '); }
 
+void Character::clearSpriteString(void) {
+  mvaddch(this->_y, this->_x - 1, ' ');
+  mvaddch(this->_y, this->_x, ' ');
+  mvaddch(this->_y, this->_x + 1, ' ');
+}
+
 void Character::putSpriteString(void) {
   for (size_t i = 0; i < this->_spriteString.length(); i++) {
     mvaddch(this->_y, this->_x - 1 + i, this->_spriteString[i]);

@@ -43,6 +43,7 @@ class Character {
   unsigned int getAttackDamage(void);
   char getSprite(void);
   void clearSprite(void);
+  void clearSpriteString(void);
   void putSprite(void);
   void putSpriteString(void);
   void putSpriteString(int initcolor, int color);

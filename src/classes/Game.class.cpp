@@ -49,7 +49,7 @@ void Game::screenCheck(Player &master, Asteroids &arbiters, Space &stars, double
       arbiters.getData()[i].setXYMax(this->_xMax, this->_yMax);
       stars.getData()[i].setXYMax(this->_xMax, this->_yMax);
     }
-    wclear(this->wnd);
+    // wclear(this->wnd);
     wattron(this->wnd, A_BOLD);
     box(this->wnd, 0, 0);
     wattroff(this->wnd, A_BOLD);

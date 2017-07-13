@@ -44,7 +44,7 @@ bool Player::getFire(void) { return (this->_fire); }
 void Player::noFire(void) { this->_fire = false; }
 
 void Player::movePlayer(unsigned int in_char) {
-  this->clearSprite();
+  this->clearSpriteString();
   switch (in_char) {
     case 'q':
     case 27:
